@@ -1,0 +1,40 @@
+PLINK v1.90b6.9 64-bit (4 Mar 2019)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --out /filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode
+  --pca
+  --vcf /filer-5/user/weisea/vcf/maf.04_minDP10_maxDP100_minQ40_missing.10.recode.vcf
+
+Hostname: slurm-08.ipk-gatersleben.de
+Working directory: /filer-5/user/weisea
+Start time: Thu Apr 10 16:10:48 2025
+
+Random number seed: 1744294248
+1031195 MB RAM detected; reserving 515597 MB for main workspace.
+--vcf:
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode-temporary.bed
++
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode-temporary.bim
++
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode-temporary.fam
+written.
+14031 variants loaded from .bim file.
+3042 people (0 males, 0 females, 3042 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode.nosex
+.
+Using up to 103 threads (change this with --threads).
+Before main variant filters, 3042 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.950972.
+14031 variants and 3042 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode.eigenval
+and
+/filer-5/user/weisea/pca/maf.04_minDP10_maxDP100_minQ40_missing.10.recode.eigenvec
+.
+
+End time: Thu Apr 10 16:11:09 2025
