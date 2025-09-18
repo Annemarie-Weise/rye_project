@@ -196,7 +196,7 @@ for (i in seq_len(nrow(maf_df))) {
   plots <- append(plots, list(p12, p13))
 }
 
-outfile <- "results/pca_PLINK.pdf"
+outfile <- "results/PLINK/pca_PLINK.pdf"
 
 pdf(outfile, width = 8.27, height = 11.69, onefile = TRUE)
 g <- cowplot::plot_grid(plotlist = plots, ncol = 2, align = "hv", 
