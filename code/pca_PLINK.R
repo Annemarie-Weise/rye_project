@@ -11,8 +11,8 @@ setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktik
 
 #################### Combine ID with species ####################
 
-DIV_table <- read.xlsx("data/12870_2025_6416_MOESM2_ESM.xlsx", sheet = 2)
-Other_table <- read.xlsx("data/20220603_Supplementary_File_1.xlsx", sheet = 1)
+DIV_table <- read.xlsx("data/ID_data/12870_2025_6416_MOESM2_ESM.xlsx", sheet = 2)
+Other_table <- read.xlsx("data/ID_data/20220603_Supplementary_File_1.xlsx", sheet = 1)
 DIV_clean <- DIV_table %>%
   rename(ID = 1) %>%
   select(ID, accession, species, subspecies, domestication.level, countrycode, panel)
@@ -103,7 +103,7 @@ id_map <- id_map %>%
   mutate(species = ifelse(Old_ID %in% ids_to_sylvestre, "Secale sylvestre", species)) %>%
   mutate(species = ifelse(Old_ID %in% ids_to_cereale, "Secale cereale", species))
 
-write.csv(id_map, "data/species_id_map.csv", row.names = FALSE)
+write.csv(id_map, "data/ID_data/species_id_map.csv", row.names = FALSE)
 
 
 
@@ -196,7 +196,7 @@ for (i in seq_len(nrow(maf_df))) {
   plots <- append(plots, list(p12, p13))
 }
 
-outfile <- "results/pca_PLINK.pdf"
+outfile <- "results/PLINK/pca_PLINK.pdf"
 
 pdf(outfile, width = 8.27, height = 11.69, onefile = TRUE)
 g <- cowplot::plot_grid(plotlist = plots, ncol = 2, align = "hv", 
