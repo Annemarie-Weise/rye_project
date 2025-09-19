@@ -70,14 +70,12 @@ df_plot <- bind_rows(
   data.frame(MAF = sylvestre_with_maf$MAF, Gruppe = "Sylvestre")
 )
 
-ggplot() +
-  # Gesamt = Blau ausgefüllt
+p <- ggplot() +
   geom_histogram(
     data = df_plot[df_plot$Gruppe == "Global", ],
     aes(x = MAF, color = "Global", fill = "Global"),
     binwidth = 0.01, boundary = 0
   ) +
-  # Sylvestre = Orange Umrandung
   geom_histogram(
     data = df_plot[df_plot$Gruppe == "Sylvestre", ],
     aes(x = MAF, color = "Sylvestre"),
@@ -95,19 +93,19 @@ ggplot() +
   guides(
     color = guide_legend(
       override.aes = list(
-        fill   = c("#377EB8", NA),          # Blau gefüllt, Orange leer
-        color  = c("#377EB8", "#FFFF33"),   # Blau Umrandung, Orange Umrandung
-        alpha  = c(1, 1),                 # Transparenz anpassen
-        linewidth = c(1, 1)                 # Rahmen bei "Gesamt" unsichtbar
+        fill   = c("#377EB8", NA),          
+        color  = c("#377EB8", "#FFFF33"),   
+        alpha  = c(1, 1),                 
+        linewidth = c(1, 1)                 
       )
     ),
-    fill = "none"  # keine extra Fill-Legende
+    fill = "none" 
   ) +
   labs(
     x = "Minor Allele Frequency",
     y = "Number of SNPs"
   ) +
-  theme_classic(base_size = 12) +
+  theme_classic(base_size = 13) +
   theme(
     axis.line        = element_line(color = "black"),
     axis.ticks       = element_line(color = "black"),
@@ -116,7 +114,9 @@ ggplot() +
     legend.position  = c(0.75, 0.75)
   )
 
-
+pdf("results/vcftools/maf_histogram.pdf", width = 6, height = 4)
+print(p)
+dev.off()
 
 
 
