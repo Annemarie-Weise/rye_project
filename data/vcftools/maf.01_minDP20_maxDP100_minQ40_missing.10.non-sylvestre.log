@@ -1,0 +1,20 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.recode.vcf
+	--remove /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/ID_data/Secale_sylvestre_IDs.txt
+	--recode-INFO-all
+	--mac 1
+	--out /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.non-sylvestre
+	--recode
+
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Excluding individuals in 'exclude' list
+After filtering, kept 3012 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 20778 out of a possible 20798 Sites
+Run Time = 96.00 seconds
