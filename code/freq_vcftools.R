@@ -2,24 +2,23 @@ library(tidyverse)
 library(cowplot)
 library(vcfR)
 library(ggplot2)
+library(dplyr)
 
 setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
-# id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
+id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
 # 
- # write.table(
- #   subset(id_map, species == "Secale strictum")[["Old_ID"]],
- #   file = "data/ID_data/Secale_strictum_IDs.txt",
- #   quote = FALSE,
- #   row.names = FALSE,
- #   col.names = FALSE
- # )
+  # write.table(
+  #   subset(id_map, species == "Secale strictum")[["Old_ID"]],
+  #   file = "data/ID_data/Secale_strictum_IDs.txt",
+  #   quote = FALSE,
+  #   row.names = FALSE,
+  #   col.names = FALSE
+  # )
 
 
 ###########
 #Histogramm
 ###########
-library(vcfR)
-library(ggplot2)
 
 lines <- readLines("data/vcftools/freq_vcf.frq")
 lines <- lines[-1]
@@ -83,7 +82,7 @@ p <- ggplot() +
   ) +
   scale_color_manual(
     name   = NULL,
-    values = c("Global" = "#377EB8", "Sylvestre" = "#FFFF33"),
+    values = c("Global" = "#377EB8", "Sylvestre" = "#E41A1C"),
     labels = c("Global", expression(italic("Secale sylvestre")))
   ) +
   scale_fill_manual(
@@ -94,7 +93,7 @@ p <- ggplot() +
     color = guide_legend(
       override.aes = list(
         fill   = c("#377EB8", NA),          
-        color  = c("#377EB8", "#FFFF33"),   
+        color  = c("#377EB8", "#E41A1C"),   
         alpha  = c(1, 1),                 
         linewidth = c(1, 1)                 
       )
@@ -127,76 +126,265 @@ dev.off()
 # Vergleich mit Allem anderen
 #############################
 
-vcf <- read.vcfR("data/vcftools/minDP20_maxDP100_minQ40_missing0.1_non-sylvestre.recode.vcf")
-vcf_variants <- as.data.frame(getFIX(vcf))  # enthält CHROM und POS als Strings
-vcf_variants$POS <- as.integer(vcf_variants$POS)
-non_sylvestre_with_maf <- merge(vcf_variants, df[, c("CHROM", "POS", "MAF")],
-                                by = c("CHROM", "POS"), all = FALSE)
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.non-sylvestre.recode.vcf")
+non_fix <- as.data.frame(getFIX(vcf)) %>%
+  transmute(CHROM, POS = as.integer(POS))
+non_sylvestre_with_maf <- non_fix %>%
+  distinct(CHROM, POS) %>%
+  inner_join(df %>% select(CHROM, POS, MAF), by = c("CHROM","POS"))
 
-sylvestre_with_maf$key <- paste(sylvestre_with_maf$CHROM, sylvestre_with_maf$POS, sep = "_")
-non_sylvestre_with_maf$key <- paste(non_sylvestre_with_maf$CHROM, non_sylvestre_with_maf$POS, sep = "_")
+shared <- inner_join(sylvestre_with_maf, non_sylvestre_with_maf,
+                     by = c("CHROM","POS"), suffix = c(".s",".n")) %>%
+          transmute(CHROM, POS, MAF = MAF.s, Gruppe = "both")
 
-shared_keys <- intersect(sylvestre_with_maf$key, non_sylvestre_with_maf$key)
-only_sylvestre <- setdiff(sylvestre_with_maf$key, shared_keys)
-write.csv(data.frame(SNP = only_sylvestre), "only_sylvestre.csv", row.names = FALSE)
-only_sylvestre
+sylv_only <- anti_join(sylvestre_with_maf, non_sylvestre_with_maf,
+                       by = c("CHROM","POS")) %>%
+             mutate(Gruppe = "sylvestre") %>% select(CHROM, POS, MAF, Gruppe)
 
-sylvestre_with_maf$Gruppe <- ifelse(sylvestre_with_maf$key %in% shared_keys, "beide", "sylvestre")
-non_sylvestre_with_maf$Gruppe <- ifelse(non_sylvestre_with_maf$key %in% shared_keys, "beide", "non-sylvestre")
+nons_only <- anti_join(non_sylvestre_with_maf, sylvestre_with_maf,
+                       by = c("CHROM","POS")) %>%
+             mutate(Gruppe = "non-sylvestre") %>% select(CHROM, POS, MAF, Gruppe)
 
-sylvestre_unique <- sylvestre_with_maf[sylvestre_with_maf$Gruppe == "sylvestre", ]
-non_sylvestre_unique <- non_sylvestre_with_maf[non_sylvestre_with_maf$Gruppe == "non-sylvestre", ]
-shared <- sylvestre_with_maf[sylvestre_with_maf$Gruppe == "beide", ]
-
-combined_maf <- rbind(shared, sylvestre_unique, non_sylvestre_unique)
-
-# Chromosomen-Plot
-library(dplyr)
+# 7 Positionen zwar global mal als SNP aufgetaucht, aber in beiden Subgruppen kein beobachtbares ALT-Allel -> Fallen weg
+combined_maf <- bind_rows(shared, sylv_only, nons_only)
 
 
-combined_maf_sub <- combined_maf[combined_maf$MAF >= 0.01 & combined_maf$MAF < 0.03, ]
-combined_maf_sub$MAF_Category <- cut(
-  combined_maf_sub$MAF,
-  breaks = c(0.01, 0.02, 0.03),
-  labels = c("0.01–0.02", "0.02–0.03"),
-  include.lowest = TRUE,
-  right = FALSE
-)
-
-bin_size <- 25000000
-combined_maf_sub$BIN <- floor(combined_maf_sub$POS / bin_size) * bin_size
+bin_size <- 25e6
+combined_maf_sub <- combined_maf %>%
+  filter(MAF >= 0.01, MAF < 0.03) %>%
+  mutate(
+    MAF_Category = cut(MAF,
+                       breaks = c(0.01, 0.02, 0.03),
+                       labels = c("0.01-0.02","0.02-0.03"),
+                       include.lowest = TRUE, right = FALSE),
+    BIN = floor(POS / bin_size) * bin_size
+  )
 
 agg_df <- combined_maf_sub %>%
-  group_by(CHROM, BIN, Gruppe, MAF_Category) %>%
-  summarise(SNP_Count = n()) %>%
-  ungroup()
+  count(CHROM, BIN, Gruppe, MAF_Category, name = "SNP_Count") %>%
+  mutate(
+    Gruppe       = factor(Gruppe, levels = c("sylvestre","both","non-sylvestre")),
+    MAF_Category = factor(MAF_Category, levels = c("0.01-0.02","0.02-0.03")),
+    Group_MAF    = interaction(Gruppe, MAF_Category, lex.order = TRUE),
+    BIN          = factor(BIN, levels = sort(unique(BIN)))
+  )
 
+fills <- c(
+  "sylvestre.0.01-0.02" = "#E41A1C",
+  "sylvestre.0.02-0.03" = "darkred",
+  "both.0.01-0.02" = "#F781BF",
+  "both.0.02-0.03" = "#984EA3",
+  "non-sylvestre.0.01-0.02" = "#377EB8",
+  "non-sylvestre.0.02-0.03" = "darkblue"
+)
+brks <- names(fills)
 
-agg_df$Gruppe <- factor(agg_df$Gruppe, levels = c("sylvestre", "beide", "non-sylvestre"))
-agg_df$MAF_Category <- factor(agg_df$MAF_Category, levels = c("0.01–0.02", "0.02–0.03"))
-agg_df$Group_MAF <- interaction(agg_df$Gruppe, agg_df$MAF_Category, lex.order = TRUE)
-agg_df$BIN <- factor(agg_df$BIN)
-
-ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
+p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
   geom_col(position = "stack") +
   facet_wrap(~CHROM, scales = "free_x") +
   scale_fill_manual(
-    name = "Gruppe & MAF",
-    values = c(
-      "beide.0.01–0.02" = "violet",
-      "beide.0.02–0.03" = "purple",
-      "sylvestre.0.01–0.02" = "red",
-      "sylvestre.0.02–0.03" = "darkred",
-      "non-sylvestre.0.01–0.02" = "blue",
-      "non-sylvestre.0.02–0.03" = "darkblue"
+    name   = "Group and MAF",
+    values = fills,
+    breaks = brks,  # <- wichtig
+    labels = c(
+      expression(italic("S. sylvestre")~"only, 0.01-0.02"),
+      expression(italic("S. sylvestre")~"only, 0.02-0.03"),
+      expression("Both, 0.01-0.02"),
+      expression("Both, 0.02-0.03"),
+      expression("Non-"*italic("S. sylvestre")*" only, 0.01-0.02"),
+      expression("Non-"*italic("S. sylvestre")*" only, 0.02-0.03")
     )
   ) +
-  labs(
-    title = "Verteilung von SNPs mit MAF < 0.03 entlang der Chromosomen (Fenstergröße: 25Mbp)",
-    x = "Genomposition (binned)",
-    y = "Anzahl SNPs"
+  scale_x_discrete(
+    breaks = function(x) x[seq(1, length(x), by = 3)]  
   ) +
-  theme_minimal() +
+  labs(
+    title = "Window size: 25Mbp",
+    x = "Genom position (binned)",
+    y = "Number of SNPs"
+  ) +
+  theme_classic(base_size = 13) +
   theme(
-    axis.text.x = element_text(angle = 60, hjust = 1)  # Schräge Achsentexte
+    axis.line         = element_line(color = "black", linewidth = 0.4),
+    axis.ticks        = element_line(color = "black", linewidth = 0.4),
+    axis.ticks.length = unit(2, "pt"),
+    axis.text.x       = element_text(angle = 60, hjust = 1, color = "black"),
+    axis.text.y       = element_text(color = "black"),
+    axis.title        = element_text(color = "black"),
+    panel.grid        = element_blank(),
+    panel.background  = element_rect(fill = "white", color = NA),
+    plot.background   = element_rect(fill = "white", color = NA),
+    strip.background  = element_rect(fill = "white", color = NA),
+    strip.text        = element_text(color = "black"),
+    legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
+    legend.text       = element_text(size = 9),     
+    legend.title      = element_text(size = 10),    
+    legend.key.size   = unit(4, "mm"),              
+    legend.spacing.y  = unit(2, "mm"),              
+    legend.spacing.x  = unit(2, "mm") 
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 60, hjust = 1)  
+  ) +
+  theme(legend.position = c(0.5, 0.13))
+
+pdf("results/vcftools/maf_sylvestre_vs_non-sylvestre.pdf", width = 14, height = 8)
+print(p)
+dev.off()
+
+
+#############################
+# Vergleich mit Strictum
+#############################
+
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.strictum.recode.vcf")
+strictum_fix <- as.data.frame(getFIX(vcf)) %>%
+  transmute(CHROM, POS = as.integer(POS))
+strictum_with_maf <- strictum_fix %>%
+  distinct(CHROM, POS) %>%
+  inner_join(df %>% select(CHROM, POS, MAF), by = c("CHROM","POS"))
+
+shared <- inner_join(sylvestre_with_maf, strictum_with_maf,
+                     by = c("CHROM","POS"), suffix = c(".s",".n")) %>%
+  transmute(CHROM, POS, MAF = MAF.s, Gruppe = "both")
+
+sylv_only <- anti_join(sylvestre_with_maf, strictum_with_maf,
+                       by = c("CHROM","POS")) %>%
+  mutate(Gruppe = "sylvestre") %>% select(CHROM, POS, MAF, Gruppe)
+
+stri_only <- anti_join(strictum_with_maf, sylvestre_with_maf,
+                       by = c("CHROM","POS")) %>%
+  mutate(Gruppe = "strictum") %>% select(CHROM, POS, MAF, Gruppe)
+
+combined_maf <- bind_rows(shared, sylv_only, stri_only)
+
+fills <- c(
+  "sylvestre" = "#E41A1C",
+  "both" = "#984EA3",
+  "strictum" = "#377EB8"
   )
+
+p <- ggplot(combined_maf, aes(x = MAF, fill = Gruppe)) +
+  geom_histogram(binwidth = 0.01, boundary = 0, color = "black", position = "stack") +
+  scale_fill_manual(values = fills,
+    breaks = names(fills), 
+    labels = c(
+      expression(italic("S. sylvestre")~"only"),
+      expression("Both"),
+      expression(italic("S. strictum")~" only")
+    )) +
+  labs(
+    title = "",
+    x = "Minor Allele Frequency (MAF)",
+    y = "Number of SNPs",
+    fill = "Group"
+  ) +
+  theme_classic(base_size = 13) +
+  theme(
+    axis.line         = element_line(color = "black", linewidth = 0.4),
+    axis.ticks        = element_line(color = "black", linewidth = 0.4),
+    axis.ticks.length = unit(2, "pt"),
+    axis.text.x       = element_text(angle = 60, hjust = 1, color = "black"),
+    axis.text.y       = element_text(color = "black"),
+    axis.title        = element_text(color = "black"),
+    panel.grid        = element_blank(),
+    panel.background  = element_rect(fill = "white", color = NA),
+    plot.background   = element_rect(fill = "white", color = NA),
+    strip.background  = element_rect(fill = "white", color = NA),
+    strip.text        = element_text(color = "black"),
+    legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
+    legend.text       = element_text(size = 9),     
+    legend.title      = element_text(size = 10),    
+    legend.key.size   = unit(4, "mm"),              
+    legend.spacing.y  = unit(2, "mm"),              
+    legend.spacing.x  = unit(2, "mm") 
+  )+
+  theme(legend.position = c(0.8, 0.8))
+pdf("results/vcftools/histogramm_sylvestre_vs_strictum.pdf", width = 6, height = 4)
+print(p)
+dev.off()
+
+
+
+bin_size <- 25e6
+combined_maf_sub <- combined_maf %>%
+  filter(MAF >= 0.01, MAF < 0.03) %>%
+  mutate(
+    MAF_Category = cut(MAF,
+                       breaks = c(0.01, 0.02, 0.03),
+                       labels = c("0.01-0.02","0.02-0.03"),
+                       include.lowest = TRUE, right = FALSE),
+    BIN = floor(POS / bin_size) * bin_size
+  )
+
+agg_df <- combined_maf_sub %>%
+  count(CHROM, BIN, Gruppe, MAF_Category, name = "SNP_Count") %>%
+  mutate(
+    Gruppe       = factor(Gruppe, levels = c("sylvestre","both","strictum")),
+    MAF_Category = factor(MAF_Category, levels = c("0.01-0.02","0.02-0.03")),
+    Group_MAF    = interaction(Gruppe, MAF_Category, lex.order = TRUE),
+    BIN          = factor(BIN, levels = sort(unique(BIN)))
+  )
+
+fills <- c(
+  "sylvestre.0.01-0.02" = "#E41A1C",
+  "sylvestre.0.02-0.03" = "darkred",
+  "both.0.01-0.02" = "#F781BF",
+  "both.0.02-0.03" = "#984EA3",
+  "strictum.0.01-0.02" = "#377EB8",
+  "strictum.0.02-0.03" = "darkblue"
+)
+
+p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
+  geom_col(position = "stack") +
+  facet_wrap(~CHROM, scales = "free_x") +
+  scale_fill_manual(
+    name   = "Group and MAF",
+    values = fills,
+    breaks = names(fills),  
+    labels = c(
+      expression(italic("S. sylvestre")~"only, 0.01-0.02"),
+      expression(italic("S. sylvestre")~"only, 0.02-0.03"),
+      expression("Both, 0.01-0.02"),
+      expression("Both, 0.02-0.03"),
+      expression(italic("S. strictum")~" only, 0.01-0.02"),
+      expression(italic("S. strictum")~" only, 0.02-0.03")
+    )
+  ) +
+  scale_x_discrete(
+    breaks = function(x) x[seq(1, length(x), by = 3)]  
+  ) +
+  labs(
+    title = "Window size: 25Mbp",
+    x = "Genom position (binned)",
+    y = "Number of SNPs"
+  ) +
+  theme_classic(base_size = 13) +
+  theme(
+    axis.line         = element_line(color = "black", linewidth = 0.4),
+    axis.ticks        = element_line(color = "black", linewidth = 0.4),
+    axis.ticks.length = unit(2, "pt"),
+    axis.text.x       = element_text(angle = 60, hjust = 1, color = "black"),
+    axis.text.y       = element_text(color = "black"),
+    axis.title        = element_text(color = "black"),
+    panel.grid        = element_blank(),
+    panel.background  = element_rect(fill = "white", color = NA),
+    plot.background   = element_rect(fill = "white", color = NA),
+    strip.background  = element_rect(fill = "white", color = NA),
+    strip.text        = element_text(color = "black"),
+    legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
+    legend.text       = element_text(size = 9),     
+    legend.title      = element_text(size = 10),    
+    legend.key.size   = unit(4, "mm"),              
+    legend.spacing.y  = unit(2, "mm"),              
+    legend.spacing.x  = unit(2, "mm") 
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 60, hjust = 1)  
+  ) +
+  theme(legend.position = c(0.8, 0.13))
+
+pdf("results/vcftools/maf_sylvestre_vs_strictum.pdf", width = 14, height = 8)
+print(p)
+dev.off()
+
