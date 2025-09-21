@@ -109,22 +109,16 @@ write.csv(id_map, "data/ID_data/species_id_map.csv", row.names = FALSE)
 
 #################### Plots ####################
 
-shapes <- c(16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15)
+#shapes <- c(16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15)
 coloures <- c(
-  "#4DAF4A",  # grün
+  "#4DAF4A",  
   "darkblue",
-  "#377EB8",  # blau
-  "#984EA3",  # violett
-  "#F781BF",  # rosa
-  "#E41A1C",  # rot
+  "#377EB8",  
+  "#984EA3",  
+  "#F781BF",  
+  "#E41A1C",  
   "darkred",
-  "#FF7F00"  # orange
-  #"#8DA0CB",   # hellblau
-  #"#66C2A5",  # türkis
-  #"#FFFF33",  # gelb
-  #"#FC8D62",  # lachs
-  #"#A65628",  # braun
-  #"#111111"  # schwarz
+  "#FF7F00"  
 )
 
 nPCs <- 20
