@@ -195,7 +195,7 @@ for (i in seq_len(nrow(maf_df))) {
 outfile <- "results/PLINK/pca_PLINK.pdf"
 
 pdf(outfile, width = 8.27, height = 11.69, onefile = TRUE)
-g <- cowplot::plot_grid(plotlist = plots, ncol = 2, align = "hv", 
+g <- plot_grid(plotlist = plots, ncol = 2, align = "hv", 
                         rel_widths = c(1,1), rel_heights = rep(1, length(plots)/2))
 print(g)
 dev.off()

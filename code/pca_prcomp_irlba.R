@@ -164,8 +164,8 @@ n_snps_pc2 <- sum(loadings_df$PC2 > 0.03, na.rm = TRUE)
 cat("PC2 SNPs >", 0.03, ":", n_snps_pc2, "von", n_snps_total,
     sprintf("(%.2f%%)", (n_snps_pc2 / n_snps_total * 100)), "\n")
 # Res: PC2 SNPs > 0.03 : 288 von 21548 (1.34%)
-# stat. Nachweis:
 
+# stat. Nachweis:
 #sylvestre SNPs > 0.03
 n <- 13
 k <- nrow(sylvestre_loadings_df)
