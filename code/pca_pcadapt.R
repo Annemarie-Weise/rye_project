@@ -258,7 +258,7 @@ pcadapt_loadings_with_ids <- function(result, pcs = 1:3, free_deg = free_deg) {
                     header = FALSE, stringsAsFactors = FALSE)
   colnames(bim) <- c("CHR","SNP","CM","BP","A1","A2")
   ids <- paste0(bim$CHR, "_", bim$BP)
-  out <- as_tibble(result$loadings[, pcs, drop = FALSE])
+  out <- as_tibble(result$loadings[, pcs, drop = FALSE], .name_repair = "minimal")
   colnames(out) <- paste0("PC", pcs)
   out <- out %>% mutate(SNP = ids, A1 = bim$A1, A2 = bim$A2, .before = 1)
   
@@ -392,6 +392,14 @@ for (k in 1:3) {
 }
 plot.new()
 dev.off()
+
+
+
+# p-values - PCs einzeln
+sylvestre_loadings_df <- pcadapt_loadings_with_ids(result, free_deg = free_deg)
+write.csv(sylvestre_loadings_df, 
+          paste0("results/pcadapt/maf_",MAF,"/",method,"/pca_loadings_only_sylvestre_",MAF,"_",method,"_pcadapt.csv"), 
+          row.names = FALSE)
 
 
 
