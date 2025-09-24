@@ -1,0 +1,40 @@
+PLINK v1.9.0-b.8 64-bit (22 Oct 2024)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --out /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic
+  --pca
+  --vcf /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic.vcf
+
+Hostname: Ass-pire
+Working directory: /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/code/com_operations
+Start time: Wed Sep 24 20:36:15 2025
+
+Random number seed: 1758738975
+14881 MB RAM detected; reserving 7440 MB for main workspace.
+--vcf:
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic-temporary.bed
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic-temporary.bim
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic-temporary.fam
+written.
+20048 variants loaded from .bim file.
+3042 people (0 males, 0 females, 3042 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic.nosex
+.
+Using up to 8 threads (change this with --threads).
+Before main variant filters, 3042 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.955683.
+20048 variants and 3042 people pass filters and QC.
+Note: No phenotypes present.
+Relationship matrix calculation complete.
+--pca: Results saved to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic.eigenval
+and
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/pca_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.biallelic.eigenvec
+.
+
+End time: Wed Sep 24 20:36:27 2025
