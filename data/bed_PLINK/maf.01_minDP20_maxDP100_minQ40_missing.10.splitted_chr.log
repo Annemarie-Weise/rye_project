@@ -1,0 +1,41 @@
+PLINK v1.9.0-b.8 64-bit (22 Oct 2024)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --make-bed
+  --out /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr
+  --vcf /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr.vcf
+
+Hostname: Ass-pire
+Working directory: /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/code/com_operations
+Start time: Thu Sep 25 18:14:15 2025
+
+Random number seed: 1758816855
+14881 MB RAM detected; reserving 7440 MB for main workspace.
+--vcf:
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr-temporary.bed
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr-temporary.bim
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr-temporary.fam
+written.
+21548 variants loaded from .bim file.
+3042 people (0 males, 0 females, 3042 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr.nosex
+.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 3042 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.955504.
+21548 variants and 3042 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr.bed
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr.bim
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted_chr.fam
+... done.
+
+End time: Thu Sep 25 18:14:17 2025
