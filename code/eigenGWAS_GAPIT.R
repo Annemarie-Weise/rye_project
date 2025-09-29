@@ -83,7 +83,7 @@ for(PC in 1:3){
   p <- manhattan_EigenGWAS(PC = PC, limits = c(0,limit[PC]),
                          title = paste0("PC", PC, ", MAF = 0.01, Model = FarmCPU"))
   pdf(paste0("manhatten_PC",PC,"_GAPIT.pdf"), 
-      width = 11.69, height = 8.27)
+      width = 10, height = 5)
   print(p)
   dev.off()
 }

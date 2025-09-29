@@ -8,6 +8,7 @@ prefix <- "results/admixture/output/maf.01_minDP20_maxDP100_minQ40_missing.10.sp
 fam <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.fam",
                   header = FALSE, stringsAsFactors = FALSE)
 samples <- read.csv("data/ID_data/species_id_map.csv", header = TRUE, sep = ",")
+samples$species[samples$species == "Triticum araraticum"] <- ""
 cols <- c(
   "#377EB8",
   "#E41A1C",
@@ -16,7 +17,7 @@ cols <- c(
 )
 
 
-pdf("results/admixture/admixture_K4_K3_K2.pdf", width=11.69, height=8.27)
+pdf("results/admixture/admixture_K4_K3_K2_0.01.pdf", width=10, height=5)
 par(mfcol=c(3,1),
     mar=c(0.5, 3.0, 0.5, 0.2),   # bottom,left,top,right 
     oma=c(9, 1, 1, 1),           
@@ -40,7 +41,7 @@ plot_K <- function(K, prefix, fam, samples, draw_x_labels=FALSE, shared_vpos=NUL
   bp <- barplot(mat,
                 col=cols[1:K],
                 names.arg=rep("", ncol(mat)),
-                ylab=paste0("Anc. Proportions, K = ", K),
+                ylab=paste0("Anc. Prop., K = ", K),
                 border=NA, space=0, axes=TRUE)
   runs <- rle(tbl$species); len <- runs$lengths; grp <- runs$values
   centers_idx <- cumsum(len) - (len - 1)/2

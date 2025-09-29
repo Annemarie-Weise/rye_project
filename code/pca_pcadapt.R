@@ -333,7 +333,7 @@ p <- manhattan_pcadapt(result, free_deg = free_deg,
 write.csv(p$df, row.names = FALSE,
           paste0("results/pcadapt/maf_",MAF,"/",method,"/results_",MAF,"_",method,"_pcadapt.csv"))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/manhatten_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 11.69, height = 8.27)
+    width = 10, height = 5)
 print(p$plot)
 dev.off()
 
@@ -414,7 +414,7 @@ for (pc in seq_len(K)) {
                    "/PC", pc, "_results_", MAF, "_", method, "_pcadapt.csv"))
   pdf(paste0("results/pcadapt/maf_", MAF, "/", method,
              "/PC", pc, "_manhatten_", MAF, "_", method, "_pcadapt.pdf"),
-      width = 11.69, height = 8.27)
+      width = 10, height = 5)
   print(p$plot)
   dev.off()
 }
