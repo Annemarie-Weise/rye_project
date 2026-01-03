@@ -1,10 +1,10 @@
 #!/bin/bash
-# usage: ./filter_vcf.sh /path/to/folder
+# usage: ./calc_freq_vcftools.sh /path/to/folder
 
 FOLDER="$1"
 
-vcftools --vcf "$FOLDER/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.recode.vcf" \
-         --out "$FOLDER/data/vcftools/freq_vcf" \
+vcftools --vcf "$FOLDER/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.recode.vcf" \
+         --out "$FOLDER/data/vcftools/freq_vcf.90" \
          --freq
 
 

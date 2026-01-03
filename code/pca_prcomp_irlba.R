@@ -7,9 +7,9 @@ library(tidyverse)
 library(cowplot)
 library(grid)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
+setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
-vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.vcf")
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.vcf")
 gt <- extract.gt(vcf,convertNA=TRUE,element='GT', as.numeric=FALSE, return.alleles=FALSE)
 geno_num <- apply(gt, 2, function(x) {
   ifelse(x == "0/0", 0,
@@ -160,14 +160,14 @@ write.csv(sylvestre_loadings_df, "results/prcomp_irlba/pca_loadings_only_sylvest
 
 
 n_snps_total <- nrow(loadings_df)
-n_snps_pc2 <- sum(loadings_df$PC2 > 0.03, na.rm = TRUE)
-cat("PC2 SNPs >", 0.03, ":", n_snps_pc2, "von", n_snps_total,
+n_snps_pc2 <- sum(loadings_df$PC2 < -0.03, na.rm = TRUE)
+cat("PC2 SNPs <", -0.03, ":", n_snps_pc2, "von", n_snps_total,
     sprintf("(%.2f%%)", (n_snps_pc2 / n_snps_total * 100)), "\n")
-# Res: PC2 SNPs > 0.03 : 288 von 21548 (1.34%)
+# Res: PC2 SNPs < -0.03 : 288 von 21548 (1.34%)
 
 # stat. Nachweis:
 #sylvestre SNPs > 0.03
-n <- 13
+n <- 9
 k <- nrow(sylvestre_loadings_df)
 p_one_sided <- phyper(k - 1, n_snps_pc2, n_snps_total - n_snps_pc2, n, lower.tail = FALSE)
 p_one_sided

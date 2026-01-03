@@ -4,7 +4,7 @@ library(vcfR)
 library(ggplot2)
 library(dplyr)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
+setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
 # 
   # write.table(
@@ -20,7 +20,7 @@ id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
 #Histogramm
 ###########
 
-lines <- readLines("data/vcftools/freq_vcf.frq")
+lines <- readLines("data/vcftools/freq_vcf.90.frq")
 lines <- lines[-1]
 
 parse_line <- function(line, maf_smallest = TRUE) {
@@ -58,7 +58,7 @@ df <- data.frame(
 df <- df[!is.na(df$MAF) & df$MAF >= 0.01, ]
 
 
-vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.sylvestre.recode.vcf")
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.sylvestre.recode.vcf")
 vcf_variants <- as.data.frame(getFIX(vcf))  # enthält CHROM und POS als Strings
 vcf_variants$POS <- as.integer(vcf_variants$POS)
 sylvestre_with_maf <- merge(vcf_variants, df[, c("CHROM", "POS", "MAF")],
@@ -126,7 +126,7 @@ dev.off()
 # Vergleich mit Allem anderen
 #############################
 
-vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.non-sylvestre.recode.vcf")
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.non-sylvestre.recode.vcf")
 non_fix <- as.data.frame(getFIX(vcf)) %>%
   transmute(CHROM, POS = as.integer(POS))
 non_sylvestre_with_maf <- non_fix %>%
@@ -196,11 +196,12 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
     )
   ) +
   scale_x_discrete(
-    breaks = function(x) x[seq(1, length(x), by = 3)]  
+    breaks = function(x) x[seq(1, length(x), by = 3)],
+    labels = function(x) sprintf("%.0f", as.numeric(as.character(x)) / 1e6)  
   ) +
   labs(
     title = "Window size: 25Mbp",
-    x = "Genom position (binned)",
+    x = "Genom position in Mbp (binned)",
     y = "Number of SNPs"
   ) +
   theme_classic(base_size = 13) +
@@ -237,7 +238,7 @@ dev.off()
 # Vergleich mit Strictum
 #############################
 
-vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.10.strictum.recode.vcf")
+vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.strictum.recode.vcf")
 strictum_fix <- as.data.frame(getFIX(vcf)) %>%
   transmute(CHROM, POS = as.integer(POS))
 strictum_with_maf <- strictum_fix %>%
@@ -352,11 +353,12 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
     )
   ) +
   scale_x_discrete(
-    breaks = function(x) x[seq(1, length(x), by = 3)]  
+    breaks = function(x) x[seq(1, length(x), by = 3)],
+    labels = function(x) sprintf("%.0f", as.numeric(as.character(x)) / 1e6)  
   ) +
   labs(
     title = "Window size: 25Mbp",
-    x = "Genom position (binned)",
+    x = "Genom position in Mbp (binned)",
     y = "Number of SNPs"
   ) +
   theme_classic(base_size = 13) +

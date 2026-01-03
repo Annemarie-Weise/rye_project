@@ -1,0 +1,42 @@
+bcftools view -R /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/only_sylvestre_biallelic_SNPs_maf.01.regions.tsv -Oz -o sylvestre_snps.subset.vcf.gz maf.01_minDP20_maxDP100_minQ40_missing.90.recode.vcf.gz
+
+bcftools index sylvestre_snps.subset.vcf.gz
+
+bcftools query -f '%CHROM\t%POS\t%REF\t%ALT\t%QUAL\t%INFO/ANN[\t%SAMPLE=%GT:%AD]\n' sylvestre_snps.subset.vcf.gz > sylvestre_snps.raw.tsv
+
+awk -F'\t' '
+BEGIN{
+  OFS="\t";
+  print "VARIANT","REF","ALT","QUAL","GENE_NAME","GENE_ID","ANN","IMPACT","HGVS_C","HGVS_P","N_CARRIERS","CARRIERS","CARRIERS_AD"
+}
+{
+  chrom=$1; pos=$2; ref=$3; alt=$4; qual=$5; annfield=$6;
+
+  split(annfield, annarr, ",");
+  ann1=annarr[1];
+
+  split(ann1, f, "|");
+  ann=f[2]; impact=f[3]; gene=f[4]; geneid=f[5]; hgvsc=f[10]; hgvsp=f[11];
+
+  carriers="";
+  carriers_ad="";
+  ncar=0;
+
+  for(i=7;i<=NF;i++){
+    split($i, sg, "=");
+    s=sg[1];
+    split(sg[2], ga, ":");
+    gt=ga[1];
+    ad=ga[2];   # erwartet "ref,alt"
+
+    if(gt!="0/0" && gt!="0|0" && gt!="./." && gt!=".|." && gt!="."){
+      ncar++;
+      carriers = (carriers=="" ? s : carriers";"s);
+      carriers_ad = (carriers_ad=="" ? s":"ad : carriers_ad";"s":"ad);
+    }
+  }
+
+  variant=chrom"_"pos;
+  print variant,ref,alt,qual,gene,geneid,ann,impact,hgvsc,hgvsp,ncar,carriers,carriers_ad;
+}
+' sylvestre_snps.raw.tsv > sylvestre_snps.annotation_and_carriers.tsv

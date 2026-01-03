@@ -8,9 +8,9 @@ library(ggtext)
 library(dplyr)
 library(tibble)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
+setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
-pcadapt_data <- read.pcadapt("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.bed", 
+pcadapt_data <- read.pcadapt("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.bed", 
                              type = "bed")
 
 ############ MAF 0.01 ################
@@ -69,7 +69,7 @@ pcadapt_pc_scatter <- function(result, maf, method, legend_pos = c(0.99, 0.8)) {
   lab_pc2 <- paste0("PC2 (", round(prop_var[2], 3), ")")
   lab_pc3 <- paste0("PC3 (", round(prop_var[3], 3), ")")
   
-  fam <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.fam",
+  fam <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.fam",
                     header = FALSE, stringsAsFactors = FALSE)
   colnames(fam) <- c("FID","IID","PAT","MAT","SEX","PHENO")
   ids <- fam$IID
@@ -254,7 +254,7 @@ dev.off()
 # Loadings von sylvestre SNPs überprüfen - 3 PCs
 pcadapt_loadings_with_ids <- function(result, pcs = 1:3, free_deg = free_deg) {
   target_snps <- read.csv("data/ID_data/only_sylvestre_SNPs_maf.01.csv")[[1]]
-  bim <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.bim",
+  bim <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.bim",
                     header = FALSE, stringsAsFactors = FALSE)
   colnames(bim) <- c("CHR","SNP","CM","BP","A1","A2")
   ids <- paste0(bim$CHR, "_", bim$BP)
@@ -288,7 +288,7 @@ write.csv(sylvestre_loadings_df,
 
 # Manhatten-Plot - 3 PCs
 manhattan_pcadapt <- function(result, alpha = 0.01, title, free_deg, limits = c(0, 7000), PC = 0) {
-  bim <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.10.splitted.bim",
+  bim <- read.table("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.bim",
                     header = FALSE, stringsAsFactors = FALSE)
   colnames(bim) <- c("CHR","SNP","CM","BP","A1","A2")
   log10p <- pchisq(if(PC == 0) result$chi2.stat else result$chi2.stat[,PC, drop = TRUE], 
@@ -310,8 +310,11 @@ manhattan_pcadapt <- function(result, alpha = 0.01, title, free_deg, limits = c(
     geom_point(alpha = 0.6, size = 0.8) +
     scale_color_manual(values = c("FALSE" = "darkgrey", "TRUE" = "#E41A1C")) +
     facet_wrap(~CHR, scales = "free_x", ncol = 4) +
+    scale_x_continuous(
+      labels = function(x) x / 1e6
+    ) +
     labs(
-      x = "Genom position (bp)",
+      x = "Genom position (Mbp)",
       y = expression(-log[10](p)),
       title = title,
       color = paste0("Significance\n(alpha = ", alpha, ",\n Bonferroni)")
@@ -424,11 +427,11 @@ for (pc in seq_len(K)) {
 
 
 
-############ MAF 0.02 ################
+############ MAF 0.05 ################
 
 
 # ------------------ Mahalanobis -----------------------
-MAF <- 0.02
+MAF <- 0.05
 method <- "mahalanobis"
 
 # Screeplot - 20 PCs
@@ -513,7 +516,7 @@ dev.off()
 
 
 # ------------------ Componentwise -----------------------
-MAF <- 0.02
+MAF <- 0.05
 method <- "componentwise"
 K <- 3
 free_deg <- 1
@@ -583,172 +586,3 @@ for (pc in seq_len(K)) {
   print(p$plot)
   dev.off()
 }
-
-
-
-############ MAF 0.03 ################
-
-
-# ------------------ Mahalanobis -----------------------
-MAF <- 0.03
-method <- "mahalanobis"
-
-# Screeplot - 20 PCs
-K <- 20
-
-result <- pcadapt(pcadapt_data, K = K, min.maf = MAF ,method = method)
-p <- pcadapt_screeplot(result, maf = MAF, method = method)
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/screeplot_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 6, height = 4)
-print(p)
-dev.off()
-
-
-
-# PCA-Plot - 3 PCs
-K <- 3
-free_deg <- K
-result <- pcadapt(pcadapt_data, K = K, min.maf = MAF ,method = method )
-p <- pcadapt_pc_scatter(result, maf = MAF, method = method)
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/pca_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.27, height = 4.8)
-print(p)
-dev.off()
-
-
-
-# QQ-Plot - 3 PCs
-log10p <- pchisq(result$chi2.stat, df = K, lower.tail = FALSE, log.p = TRUE) / log(10)
-p <- qq_log10p(log10p, title = paste0("MAF = ", MAF, ", Method = ", method),
-               limits = c(0, 400))
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/qq_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
-print(p)
-dev.off()
-
-
-
-# Histogramm - 3 PCs
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histogram_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
-hist(result$pvalues, xlab = "p-values", breaks = 50, col = "#FF7F00", main = "")
-title(main = paste0("MAF = ", MAF, ", Method = ", method), font.main = 1, 
-      cex.main  = 0.9, adj = 0)
-dev.off()
-
-
-
-# Loading - LD-Thinning? - 3 PCs
-pdf(paste0("results/pcadapt/maf_", MAF, "/", method, "/LD-Thinning_", MAF, "_", method, "_pcadapt.pdf"),
-    width = 8, height = 6)
-op <- par(mfrow = c(2, 2), mar   = c(4, 4, 1, 1), oma   = c(1, 1, 3, 1))
-on.exit(par(op), add = TRUE)
-for (i in 1:3) {
-  plot(result$loadings[, i],
-       pch = 19, cex = .3,
-       ylab = paste0("Loadings PC", i), xlab = "")
-}
-mtext(paste0("   MAF = ", MAF, ", Method = ", method),
-      side = 3, outer = TRUE, line = 1, adj = 0, font = 1, cex  = 1.0)
-dev.off()
-
-
-
-# Loadings-Violin - 3 PCs
-p <- loadings_violin_pcadapt(result, title = paste0("MAF = ", MAF, ", Method = ", method))
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/loadings_violins_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.27, height = 5)
-print(p)
-dev.off()
-
-
-# Manhatten-Plot - 3 PCs
-p <- manhattan_pcadapt(result, free_deg = free_deg,
-                       title = paste0("MAF = ", MAF, ", Method = ", method),
-                       limits = c(0, 400))
-write.csv(p$df, row.names = FALSE,
-          paste0("results/pcadapt/maf_",MAF,"/",method,"/results_",MAF,"_",method,"_pcadapt.csv"))
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/manhatten_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 11.69, height = 8.27)
-print(p$plot)
-dev.off()
-
-
-# ------------------ Componentwise -----------------------
-MAF <- 0.03
-method <- "componentwise"
-K <- 3
-free_deg <- 1
-
-result <- pcadapt(pcadapt_data, K = K, min.maf = MAF , method = method)
-
-# QQ-Plots
-log10p_PC1 <- pchisq(result$chi2.stat[,1], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
-log10p_PC2 <- pchisq(result$chi2.stat[,2], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
-log10p_PC3 <- pchisq(result$chi2.stat[,3], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
-
-p1 <- qq_log10p(log10p_PC1, title = bquote(atop(bold("(a)") ~ " PC1, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
-                limits = c(0, 400))
-p2 <- qq_log10p(log10p_PC2, title = bquote(atop(bold("(b)") ~ " PC2, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
-                limits = c(0, 70))
-p3 <- qq_log10p(log10p_PC3, title = bquote(atop(bold("(c)") ~ " PC3, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
-                limits = c(0, 150))
-pg <- plot_grid(
-  p1, p2,
-  p3, NULL,       
-  ncol = 2, nrow = 2, align = "hv"
-)
-pdf(paste0("results/pcadapt/maf_", MAF, "/", method, "/qqs_", MAF, "_", method, "_pcadapt.pdf"),
-    width = 9.6, height = 9.6)
-print(pg)
-dev.off()
-
-
-
-# Histogramme
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histograms_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.6, height = 9.6)
-op <- par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
-on.exit(par(op), add = TRUE)
-for (k in 1:3) {
-  x <- result$pvalues[, k]
-  x <- x[is.finite(x)]
-  hist(x, xlab = "p-values", breaks = 50, col = "#FF7F00", main = "")
-  lab <- paste0("(", letters[k], ")")
-  title(
-    main = bquote(
-      bold(.(lab)) ~ " PC" * .(k) * "," ~ " MAF = " ~ .(MAF) * ", Method = " ~ .(method)),
-    adj = 0,      # linksbündig
-    cex.main = 0.9
-  )
-}
-plot.new()
-dev.off()
-
-
-
-# Manhatten-Plot - 3 PCs
-limit <- c(400,75,150)
-for (pc in seq_len(K)) {
-  p <- manhattan_pcadapt(result, free_deg = free_deg, limits = c(0, limit[pc]), PC = pc,
-                         title = paste0("PC", pc, ", MAF = ", MAF, ", Method = ", method)
-  )
-  write.csv(p$df, row.names = FALSE,
-            paste0("results/pcadapt/maf_", MAF, "/", method,
-                   "/PC", pc, "_results_", MAF, "_", method, "_pcadapt.csv"))
-  pdf(paste0("results/pcadapt/maf_", MAF, "/", method,
-             "/PC", pc, "_manhatten_", MAF, "_", method, "_pcadapt.pdf"),
-      width = 11.69, height = 8.27)
-  print(p$plot)
-  dev.off()
-}
-
-
-
-
-
-
-

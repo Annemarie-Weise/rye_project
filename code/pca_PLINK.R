@@ -7,7 +7,7 @@ library(readr)
 library(tibble)
 library(purrr)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
+setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
 #################### Combine ID with species ####################
 
@@ -108,6 +108,8 @@ write.csv(id_map, "data/ID_data/species_id_map.csv", row.names = FALSE)
 
 
 #################### Plots ####################
+
+id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
 
 #shapes <- c(16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15)
 coloures <- c(

@@ -1,10 +1,10 @@
 library(dplyr)
 library(ggplot2)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Git/rye_project")
+setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
-compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5) {
-  pcadapt <- read.csv(paste0("results/pcadapt/maf_0.01/componentwise/PC",PC,"_results_0.01_componentwise_pcadapt.csv"), 
+compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5, MAF = 0.01) {
+  pcadapt <- read.csv(paste0("results/pcadapt/maf_",MAF,"/componentwise/PC",PC,"_results_",MAF,"_componentwise_pcadapt.csv"), 
                       header = TRUE)
   x <- trimws(as.character(pcadapt$CHR))
   x <- sub("(?i)^chr([1-7])r$", "\\1", x, perl = TRUE)
@@ -12,7 +12,7 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5) {
   x <- sub("(?i)^chrb$", "9", x, perl = TRUE)
   pcadapt$CHR <- as.integer(x)
   
-  eigenGWAS <- read.csv(paste0("results/EigenGWAS/GAPIT.Association.GWAS_Results.FarmCPU.PC",PC,"(NYC).csv"), 
+  eigenGWAS <- read.csv(paste0("results/EigenGWAS/maf_",MAF,"/GAPIT.Association.GWAS_Results.FarmCPU.PC",PC,"(NYC).csv"), 
                         header = TRUE)
   names(eigenGWAS) <- c("SNP_eigen", "CHR", "BP", "P_eigen", "MAF", "nobs", "Effect", "H.B.P.Value")
   
@@ -37,9 +37,12 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5) {
     facet_wrap(~ CHR, scales = "free_x", ncol = 4) +
     theme_bw() +
     labs(
-      x = "Genome position (bp)",
+      x = "Genome position (Mbp)",
       y = expression(-log[10](p)),
       title = paste0("PC",PC,": pcadapt (red) vs. EigenGWAS (green)")
+    ) +
+    scale_x_continuous(
+      labels = function(x) x / 1e6
     ) +
     theme(
       strip.text = element_text(size = 9),
@@ -146,19 +149,37 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5) {
 }
 
 
-
+# MAF 0.01
 mark <- c(60,70,6)
 for (PC in 1:3) {
   p <- compare_pcadapt_EigenGWAS(PC, mark = mark[PC])
   write.csv(p$sylvestre_df, row.names = FALSE,
-            paste0("results/comp_pcadapt_EigenGWAS/sylvestre_only_0.01_sig_PC",PC,".csv"))
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.01/sylvestre_only_0.01_sig_PC",PC,".csv"))
   write.csv(p$df, row.names = FALSE,
-            paste0("results/comp_pcadapt_EigenGWAS/all_0.01_PC",PC,".csv"))
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.01/all_0.01_PC",PC,".csv"))
   write.csv(p$significant, row.names = FALSE,
-            paste0("results/comp_pcadapt_EigenGWAS/sig_0.01_PC",PC,".csv"))
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.01/sig_0.01_PC",PC,".csv"))
   write.csv(p$genes, row.names = FALSE,
-            paste0("results/comp_pcadapt_EigenGWAS/gene_test_0.01_PC",PC,".csv"))
-  pdf(paste0("results/comp_pcadapt_EigenGWAS/comp_manhatten_PC",PC,".pdf"), 
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.01/gene_test_0.01_PC",PC,".csv"))
+  pdf(paste0("results/comp_pcadapt_EigenGWAS/maf_0.01/comp_0.01_manhatten_PC",PC,".pdf"), 
+      width = 9, height = 5)
+  print(p$plot)
+  dev.off()
+}
+
+# MAF 0.05
+mark <- c(15,7,6)
+for (PC in 1:3) {
+  p <- compare_pcadapt_EigenGWAS(PC, mark = mark[PC], MAF = 0.05)
+  write.csv(p$sylvestre_df, row.names = FALSE,
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.05/sylvestre_only_0.05_sig_PC",PC,".csv"))
+  write.csv(p$df, row.names = FALSE,
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.05/all_0.05_PC",PC,".csv"))
+  write.csv(p$significant, row.names = FALSE,
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.05/sig_0.05_PC",PC,".csv"))
+  write.csv(p$genes, row.names = FALSE,
+            paste0("results/comp_pcadapt_EigenGWAS/maf_0.05/gene_test_0.05_PC",PC,".csv"))
+  pdf(paste0("results/comp_pcadapt_EigenGWAS/maf_0.05/comp_0.05_manhatten_PC",PC,".pdf"), 
       width = 9, height = 5)
   print(p$plot)
   dev.off()
