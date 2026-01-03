@@ -1,0 +1,24 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/vcftools/maf.05_minDP20_maxDP100_minQ40_missing.90.recode.vcf
+	--fst-window-size 1000000
+	--fst-window-step 1000000
+	--weir-fst-pop /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/Secale_sylvestre_IDs.txt
+	--weir-fst-pop /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/Secale_other_IDs.txt
+	--keep /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/Secale_sylvestre_IDs.txt
+	--keep /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/Secale_other_IDs.txt
+	--out /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/results/vcftools/Fst_sylvestre_other_minus_strictum_maf0.05_1Mb
+
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Keeping individuals in 'keep' list
+After filtering, kept 2889 out of 3042 Individuals
+Outputting Windowed Weir and Cockerham Fst estimates.
+Weir and Cockerham mean Fst estimate: 0.19587
+Weir and Cockerham weighted Fst estimate: 0.32189
+After filtering, kept 11477 out of a possible 11477 Sites
+Run Time = 6.00 seconds

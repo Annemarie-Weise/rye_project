@@ -1,0 +1,37 @@
+PLINK v1.9.0-b.8 64-bit (22 Oct 2024)              cog-genomics.org/plink/1.9/
+(C) 2005-2024 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.log.
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --make-bed
+  --out /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr
+  --vcf /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.vcf
+
+14881 MB RAM detected; reserving 7440 MB for main workspace.
+--vcf: 18k variants complete.
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr-temporary.bed
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr-temporary.bim
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr-temporary.fam
+written.
+18812 variants loaded from .bim file.
+3042 people (0 males, 0 females, 3042 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.nosex
+.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 3042 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.97773.
+18812 variants and 3042 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.bed
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.bim
++
+/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted_chr.fam
+... done.
+

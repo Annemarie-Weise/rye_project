@@ -1,0 +1,597 @@
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.9
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.90
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 18169 out of a possible 7678879 Sites
+Run Time = 3527.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.91
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.91
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 17869 out of a possible 7678879 Sites
+Run Time = 3407.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.92
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.92
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 17462 out of a possible 7678879 Sites
+Run Time = 3365.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.93
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.93
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 16987 out of a possible 7678879 Sites
+Run Time = 3401.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.94
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.94
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 16457 out of a possible 7678879 Sites
+Run Time = 3535.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.01
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.95
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.95
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 15700 out of a possible 7678879 Sites
+Run Time = 3299.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.9
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.90
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 15005 out of a possible 7678879 Sites
+Run Time = 3284.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.91
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.91
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 14773 out of a possible 7678879 Sites
+Run Time = 3283.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.92
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.92
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 14436 out of a possible 7678879 Sites
+Run Time = 3268.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.93
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.93
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 14030 out of a possible 7678879 Sites
+Run Time = 3284.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.94
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.94
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 13586 out of a possible 7678879 Sites
+Run Time = 3280.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.02
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.95
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.02_minDP20_maxDP100_minQ40_missing.95
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12965 out of a possible 7678879 Sites
+Run Time = 3323.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.9
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.90
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 13389 out of a possible 7678879 Sites
+Run Time = 3287.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.91
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.91
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 13178 out of a possible 7678879 Sites
+Run Time = 3306.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.92
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.92
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12867 out of a possible 7678879 Sites
+Run Time = 3438.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.93
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.93
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12502 out of a possible 7678879 Sites
+Run Time = 3434.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.94
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.94
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12092 out of a possible 7678879 Sites
+Run Time = 3441.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.03
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.95
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.03_minDP20_maxDP100_minQ40_missing.95
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 11537 out of a possible 7678879 Sites
+Run Time = 3432.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.9
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.90
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12289 out of a possible 7678879 Sites
+Run Time = 3427.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.91
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.91
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 12089 out of a possible 7678879 Sites
+Run Time = 3433.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.92
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.92
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 11803 out of a possible 7678879 Sites
+Run Time = 3436.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.93
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.93
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 11477 out of a possible 7678879 Sites
+Run Time = 3445.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.94
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.94
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 11094 out of a possible 7678879 Sites
+Run Time = 3440.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.04
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.95
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.04_minDP20_maxDP100_minQ40_missing.95
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 10577 out of a possible 7678879 Sites
+Run Time = 3562.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.05
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.9
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.05_minDP20_maxDP100_minQ40_missing.90
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+After filtering, kept 11477 out of a possible 7678879 Sites
+Run Time = 3701.00 seconds
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--gzvcf /filer-5/user/dreissig/all_rye_gbs/rye_evg2023t0_divpanel2022_schreiber2022_ER22_q30Q30_DPAD_Q40.ANN.vcf.gz
+	--recode-INFO-all
+	--maf 0.05
+	--max-meanDP 100
+	--min-meanDP 20
+	--minQ 40
+	--max-missing 0.91
+	--out /filer-5/user/weisea/project/vcf_new_miss/maf.05_minDP20_maxDP100_minQ40_missing.91
+	--recode
+
+Using zlib version: 1.2.7
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+Warning: Expected at least 2 parts in INFO entry: ID=DP4,Number=4,Type=Integer,Description="Number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases">
+After filtering, kept 3042 out of 3042 Individuals
+Outputting VCF file...
+slurmstepd: error: *** JOB 7768788 ON slurm-17 CANCELLED AT 2025-12-31T20:06:10 ***
