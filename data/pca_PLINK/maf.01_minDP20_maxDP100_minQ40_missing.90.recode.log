@@ -1,0 +1,39 @@
+PLINK v2.00a3LM AVX2 Intel (11 Oct 2021)
+Options in effect:
+  --allow-extra-chr
+  --double-id
+  --out /filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode
+  --pca 20 meanimpute
+  --threads 8
+  --vcf /filer-5/user/weisea/project/vcf_new_miss/maf.01_minDP20_maxDP100_minQ40_missing.90.recode.vcf
+
+Hostname: slurm-08.ipk-gatersleben.de
+Working directory: /filer-5/user/weisea/project
+Start time: Thu Jan  1 16:36:36 2026
+
+Random number seed: 1767281796
+1031183 MiB RAM detected; reserving 515591 MiB for main workspace.
+Using up to 8 compute threads.
+--vcf: 18169 variants scanned.
+--vcf:
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode-temporary.pgen
++
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode-temporary.pvar.zst
++
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode-temporary.psam
+written.
+3042 samples (0 females, 0 males, 3042 ambiguous; 3042 founders) loaded from
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode-temporary.psam.
+18169 variants loaded from
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode-temporary.pvar.zst.
+Note: No phenotype data present.
+Calculating allele frequencies... done.
+Constructing GRM: done.
+Extracting eigenvalues and eigenvectors... done.
+--pca: Eigenvectors written to
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode.eigenvec
+, and eigenvalues written to
+/filer-5/user/weisea/project/pca_new/maf.01_minDP20_maxDP100_minQ40_missing.90.recode.eigenval
+.
+
+End time: Thu Jan  1 16:36:48 2026
