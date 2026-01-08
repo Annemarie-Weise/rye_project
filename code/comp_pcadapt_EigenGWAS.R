@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library(cowplot)
 
 setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
@@ -39,15 +40,15 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5, MAF = 0.01) 
     labs(
       x = "Genome position (Mbp)",
       y = expression(-log[10](p)),
-      title = paste0("PC",PC,": pcadapt (red) vs. EigenGWAS (green)")
+      title = paste0("PC",PC)
     ) +
     scale_x_continuous(
       labels = function(x) x / 1e6
     ) +
     theme(
-      strip.text = element_text(size = 9),
-      axis.text.x = element_text(size = 6, angle = 45, hjust = 1),
-      axis.text.y = element_text(size = 6),
+      strip.text = element_text(size = 12),
+      axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
+      axis.text.y = element_text(size = 9),
       legend.position = "none"
     )
   
@@ -59,8 +60,28 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5, MAF = 0.01) 
                aes(x = BP, y = ifelse(minusLog10P > minusLog10P_eigen,
                               minusLog10P + mark,minusLog10P_eigen + mark)),
                inherit.aes = FALSE, shape = 25, fill = "darkblue", size = 1, colour = "darkblue")
+  legend_df <- data.frame(
+    Method = c("pcadapt", "EigenGWAS"),
+    x = 1,
+    y = c(2, 1)
+  )
+  legend_plot <- ggplot(legend_df, aes(x = x, y = y, color = Method)) +
+    geom_point(size = 0, alpha = 0) +   # <- im Panel unsichtbar
+    scale_color_manual(
+      values = c(pcadapt = "#E41A1C", EigenGWAS = "#4DAF4A"),
+      name = "Method"
+    ) +
+    guides(
+      color = guide_legend(override.aes = list(size = 2.5, alpha = 1))
+    ) +
+    theme_void() +
+    theme(
+      legend.position = "right",
+      legend.text = element_text(size = 10, color = "black"),
+      legend.title = element_text(size = 10, color = "black"),
+      legend.key.height = unit(0.6, "cm")
+    )
   
-
   genes <- read.csv("data/ID_data/important_genes.csv", header = TRUE, stringsAsFactors = FALSE)
   genes$BP_Start <- as.numeric(genes$BP_Start)
   genes$BP_End   <- as.numeric(genes$BP_End)
@@ -138,8 +159,12 @@ compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5, MAF = 0.01) 
     geom_text(
       data = tri_df, angle = 45, hjust = 0, vjust = 0,
       aes(x = Pos_highest_SNP, y = Val_highest_SNP + mark + (0.5*mark), label = Name),
-      inherit.aes = FALSE, size = 2.5, show.legend = FALSE
+      inherit.aes = FALSE, size = 3, show.legend = FALSE
     )
+  
+  p <- ggdraw() +
+    draw_plot(p, x = 0, y = 0, width = 1, height = 1) +   # ← volle Fläche!
+    draw_plot(legend_plot, x = 0.7, y = 0.2, width = 0.25, height = 0.25)
   
   list(plot = p,
        sylvestre_df = sylvestre_df,

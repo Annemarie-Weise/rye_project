@@ -1,4 +1,5 @@
 library(dplyr)
+library(tidyverse)
 library(readr)
 library(stringr)
 library(ggplot2)
@@ -192,7 +193,7 @@ res_1  <- read_ri("maf0.01_ri_1Mb.csv",  "1 Mbp")
 df <- bind_rows(res_1, res_25)
 
 p <- plot_nPC(df, title = "Numbers of variants per window (MAF = 0.01)")
-ggsave("n_maf0.01_PCrows_1vs25Mb.pdf", p, width = 20, height = 7)
+ggsave("n_maf0.01_PCrows_1vs25Mb.pdf", p, width = 10, height = 5)
 print(p)
 
 
@@ -217,5 +218,5 @@ res_1  <- read_ri("maf0.05_ri_1Mb.csv",  "1 Mbp")
 df <- bind_rows(res_1, res_25)
 
 p <- plot_nPC(df, title = "Numbers of variants per window (MAF = 0.05)")
-ggsave("n_maf0.05_PCrows_1vs25Mb.pdf", p, width = 20, height = 7)
+ggsave("n_maf0.05_PCrows_1vs25Mb.pdf", p, width = 10, height = 5)
 print(p)

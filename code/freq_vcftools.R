@@ -102,7 +102,7 @@ p <- ggplot() +
   ) +
   labs(
     x = "Minor Allele Frequency",
-    y = "Number of SNPs"
+    y = "Number of Variants"
   ) +
   theme_classic(base_size = 13) +
   theme(
@@ -202,9 +202,9 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
   labs(
     title = "Window size: 25Mbp",
     x = "Genom position in Mbp (binned)",
-    y = "Number of SNPs"
+    y = "Number of Variants"
   ) +
-  theme_classic(base_size = 13) +
+  theme_classic(base_size = 14) +
   theme(
     axis.line         = element_line(color = "black", linewidth = 0.4),
     axis.ticks        = element_line(color = "black", linewidth = 0.4),
@@ -216,10 +216,10 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
     panel.background  = element_rect(fill = "white", color = NA),
     plot.background   = element_rect(fill = "white", color = NA),
     strip.background  = element_rect(fill = "white", color = NA),
-    strip.text        = element_text(color = "black"),
+    strip.text        = element_text(size = 14,color = "black"),
     legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
-    legend.text       = element_text(size = 9),     
-    legend.title      = element_text(size = 10),    
+    legend.text       = element_text(size = 14),     
+    legend.title      = element_text(size = 14),    
     legend.key.size   = unit(4, "mm"),              
     legend.spacing.y  = unit(2, "mm"),              
     legend.spacing.x  = unit(2, "mm") 
@@ -277,10 +277,10 @@ p <- ggplot(combined_maf, aes(x = MAF, fill = Gruppe)) +
   labs(
     title = "",
     x = "Minor Allele Frequency (MAF)",
-    y = "Number of SNPs",
+    y = "Number of Variants",
     fill = "Group"
   ) +
-  theme_classic(base_size = 13) +
+  theme_classic(base_size = 14) +
   theme(
     axis.line         = element_line(color = "black", linewidth = 0.4),
     axis.ticks        = element_line(color = "black", linewidth = 0.4),
@@ -292,10 +292,10 @@ p <- ggplot(combined_maf, aes(x = MAF, fill = Gruppe)) +
     panel.background  = element_rect(fill = "white", color = NA),
     plot.background   = element_rect(fill = "white", color = NA),
     strip.background  = element_rect(fill = "white", color = NA),
-    strip.text        = element_text(color = "black"),
+    strip.text        = element_text(size = 14, color = "black"),
     legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
-    legend.text       = element_text(size = 9),     
-    legend.title      = element_text(size = 10),    
+    legend.text       = element_text(size = 14),     
+    legend.title      = element_text(size = 14),    
     legend.key.size   = unit(4, "mm"),              
     legend.spacing.y  = unit(2, "mm"),              
     legend.spacing.x  = unit(2, "mm") 
@@ -359,9 +359,9 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
   labs(
     title = "Window size: 25Mbp",
     x = "Genom position in Mbp (binned)",
-    y = "Number of SNPs"
+    y = "Number of Variants"
   ) +
-  theme_classic(base_size = 13) +
+  theme_classic(base_size = 14) +
   theme(
     axis.line         = element_line(color = "black", linewidth = 0.4),
     axis.ticks        = element_line(color = "black", linewidth = 0.4),
@@ -373,10 +373,10 @@ p <- ggplot(agg_df, aes(x = BIN, y = SNP_Count, fill = Group_MAF)) +
     panel.background  = element_rect(fill = "white", color = NA),
     plot.background   = element_rect(fill = "white", color = NA),
     strip.background  = element_rect(fill = "white", color = NA),
-    strip.text        = element_text(color = "black"),
+    strip.text        = element_text(size = 14,color = "black"),
     legend.background = element_rect(fill = alpha("white", 0.8), color = NA),
-    legend.text       = element_text(size = 9),     
-    legend.title      = element_text(size = 10),    
+    legend.text       = element_text(size = 14),     
+    legend.title      = element_text(size = 14),    
     legend.key.size   = unit(4, "mm"),              
     legend.spacing.y  = unit(2, "mm"),              
     legend.spacing.x  = unit(2, "mm") 

@@ -65,6 +65,9 @@ for (MAF in MAFs) {
     df <- df %>% mutate(Significant = P.value < alpha/nrow(df))
     df <- df %>% mutate(minusLog10P = -log10(P.value))
     df$minusLog10P[df$P.value == 0] <- 500
+    write.csv(df, 
+              paste0("GAPIT.Association.GWAS_Results.FarmCPU.PC",PC,"(NYC).csv"), 
+              row.names = FALSE)
     df$Chr <- factor(
       df$Chr,
       levels = as.character(1:9),
@@ -81,15 +84,20 @@ for (MAF in MAFs) {
         title = title,
         color = paste0("Significance\n(alpha = ", alpha, ",\n Bonferroni)")
       ) +
+      guides(
+        color = guide_legend(
+          override.aes = list(size = 2.5)
+        )
+      )+
       scale_x_continuous(
         labels = function(x) x / 1e6
       ) +
       coord_cartesian(ylim = limits) +
       theme_bw() +
       theme(
-        strip.text = element_text(size = 9),
-        axis.text.x = element_text(size = 6, angle = 45, hjust = 1),
-        axis.text.y = element_text(size = 6),
+        strip.text = element_text(size = 13),
+        axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
+        axis.text.y = element_text(size = 9),
         legend.position = c(0.9, 0.1),
         legend.justification = c(1, 0.5)
       )

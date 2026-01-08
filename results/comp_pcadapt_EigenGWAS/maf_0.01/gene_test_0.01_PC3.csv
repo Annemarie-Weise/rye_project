@@ -1,23 +1,23 @@
 "CHR","BP_Start","BP_End","ID","Function","Name","Num_Inside_SNP","Val_highest_SNP","Pos_highest_SNP","Num_Border_SNP","Val_highest_SNP_border","Pos_highest_SNP_border"
-"chr7R",899700001,899900000,"SECCE7Rv1G0527040","Ethylene receptor","SeETR2",0,NA,NA,0,NA,NA
-"chr7R",880700001,880800000,"SECCE7Rv1G0523160","Nicotianamine synthase","SeNAS3",0,NA,NA,0,NA,NA
-"chr7R",867200001,867800000,"SECCE7Rv1G0520140","Kaurene synthase","SeKS140",0,NA,NA,0,NA,NA
-"chr7R",867900001,8.68e+08,"SECCE7Rv1G0520170","Kaurene synthase","SeKS170",0,NA,NA,0,NA,NA
-"chr7R",867900001,8.68e+08,"SECCE7Rv1G0520210","Kaurene synthase","SeKS210",0,NA,NA,0,NA,NA
-"chr7R",674800001,675500000,"SECCE7Rv1G0500800","Receptor-like protein kinase","SeRLK5",0,NA,NA,0,NA,NA
-"chr5R",725800001,725900000,"SECCE5Rv1G0354670","Kinase family protein","SAPK",0,NA,NA,0,NA,NA
-"chr5R",354200001,354300000,"SECCE5Rv1G0317820","Calcium-binding EF-hand family protein","SeCBP",0,NA,NA,0,NA,NA
+"chr7R",899763298,899765744,"SECCE7Rv1G0527040","Ethylene receptor","SeETR2",0,NA,NA,0,NA,NA
+"chr7R",880733309,880734492,"SECCE7Rv1G0523160","Nicotianamine synthase","SeNAS3",0,NA,NA,0,NA,NA
+"chr7R",867790503,867796532,"SECCE7Rv1G0520140","Kaurene synthase","SeKS140",0,NA,NA,0,NA,NA
+"chr7R",867903016,867907122,"SECCE7Rv1G0520170","Kaurene synthase","SeKS170",0,NA,NA,0,NA,NA
+"chr7R",867964675,867968148,"SECCE7Rv1G0520210","Kaurene synthase","SeKS210",0,NA,NA,0,NA,NA
+"chr7R",675023555,675026740,"SECCE7Rv1G0500800","Receptor-like protein kinase","SeRLK5",0,NA,NA,0,NA,NA
+"chr5R",725797024,725803041,"SECCE5Rv1G0354670","Kinase family protein","SAPK",0,NA,NA,0,NA,NA
+"chr5R",354280501,354283436,"SECCE5Rv1G0317820","Calcium-binding EF-hand family protein","SeCBP",0,NA,NA,0,NA,NA
 "chr6R",424887522,424889033,"SECCE6Rv1G0398700","Ammonium transporter (affecting rice grain yield and plant growth)","SeAMT1",0,NA,NA,0,NA,NA
-"chr6R",425666891,425675788,"SECCE6Rv1G0398770","Fatty acid hydroxylase (potentially regulating environmentally sensitive male sterility)","SeCER1",0,NA,NA,0,NA,NA
-"chr5R",168700001,170200000,"SECCE5Rv1G0310420","Acyl-CoA-binding domain-containing protein 4","SeACBP4",0,NA,NA,0,NA,NA
-"chr5R",104300001,104800000,"SECCE5Rv1G0307070","Kinesin-like protein","SeBC12",0,NA,NA,0,NA,NA
-"chr4R",812500001,812600000,"SECCE4Rv1G0279220","Glutathione S-transferase","SeGSTU18",0,NA,NA,0,NA,NA
-"chr4R",328200001,328300000,"SECCE4Rv1G0235340","Bidirectional sugar transporter SWEET","SeSWEET",0,NA,NA,0,NA,NA
-"chr3R",135300001,135700000,"SECCE3Rv1G0162670","Transcription factor, putative","SeICE70",0,NA,NA,0,NA,NA
-"chr3R",136200001,136500000,"SECCE3Rv1G0162690","Transcription factor, putative","SeICE90",0,NA,NA,0,NA,NA
-"chr3R",104400001,104500000,"SECCE3Rv1G0160350","BTR1-like protein","SeBtr",0,NA,NA,0,NA,NA
-"chr2R",279800001,285200000,"SECCE2Rv1G0090670","Spermidine synthase","SeSPDS2",0,NA,NA,0,NA,NA
-"chr2R",216600001,216700000,"SECCE2Rv1G0086880","Phenylalanine ammonia-lyase","SePAL",0,NA,NA,0,NA,NA
-"chr2R",163200001,165400000,"SECCE2Rv1G0083320","MADS-box transcription factor","SeMADS18",1,52.0521655373805,163805987,0,NA,NA
-"chr2R",162900001,1.63e+08,"SECCE2Rv1G0083180","Gibberellin receptor GID1A","SeGID1",0,NA,NA,0,NA,NA
-"chr2R",346200001,346700000,"SECCE2Rv1G0092210","WD repeat-containing protein","SeWDR5B",0,NA,NA,0,NA,NA
+"chr6R",425668162,425674517,"SECCE6Rv1G0398770","Fatty acid hydroxylase (potentially regulating environmentally sensitive male sterility)","SeCER1",0,NA,NA,0,NA,NA
+"chr5R",168705237,168710650,"SECCE5Rv1G0310420","Acyl-CoA-binding domain-containing protein 4","SeACBP4",0,NA,NA,0,NA,NA
+"chr5R",104789172,104794436,"SECCE5Rv1G0307070","Kinesin-like protein","SeBC12",0,NA,NA,0,NA,NA
+"chr4R",812573047,812573748,"SECCE4Rv1G0279220","Glutathione S-transferase","SeGSTU18",0,NA,NA,0,NA,NA
+"chr4R",328263416,328265086,"SECCE4Rv1G0235340","Bidirectional sugar transporter SWEET","SeSWEET",0,NA,NA,0,NA,NA
+"chr3R",135618834,135620447,"SECCE3Rv1G0162670","Transcription factor, putative","SeICE70",0,NA,NA,0,NA,NA
+"chr3R",136319984,136321459,"SECCE3Rv1G0162690","Transcription factor, putative","SeICE90",0,NA,NA,0,NA,NA
+"chr3R",104436397,104436993,"SECCE3Rv1G0160350","BTR1-like protein","SeBtr",0,NA,NA,0,NA,NA
+"chr2R",284953196,284962827,"SECCE2Rv1G0090670","Spermidine synthase","SeSPDS2",0,NA,NA,0,NA,NA
+"chr2R",216626344,216628473,"SECCE2Rv1G0086880","Phenylalanine ammonia-lyase","SePAL",0,NA,NA,0,NA,NA
+"chr2R",164983289,164996710,"SECCE2Rv1G0083320","MADS-box transcription factor","SeMADS18",0,NA,NA,0,NA,NA
+"chr2R",162913275,162914339,"SECCE2Rv1G0083180","Gibberellin receptor GID1A","SeGID1",0,NA,NA,0,NA,NA
+"chr2R",346693311,346708307,"SECCE2Rv1G0092210","WD repeat-containing protein","SeWDR5B",0,NA,NA,0,NA,NA

@@ -25,7 +25,7 @@ method <- "mahalanobis"
 K <- 20
 result <- pcadapt(pcadapt_data, K = K, min.maf = MAF ,method = method)
 
-pcadapt_screeplot <- function(result, maf, method) {
+pcadapt_screeplot <- function(result, maf, method, label = "(a)") {
   prop_var <- (result$singular.values^2)
   df <- data.frame(
     PC = seq_along(prop_var),
@@ -37,9 +37,9 @@ pcadapt_screeplot <- function(result, maf, method) {
     labs(
       x = "Principal component",
       y = "Variance proportion",
-      title = paste0("MAF = ", maf, ", Method = ", method)
+      title = bquote(bold(.(label)) ~ " MAF = " ~ .(maf))
     ) +
-    theme_classic(base_size = 13) +
+    theme_classic(base_size = 14) +
     theme(
       axis.line         = element_line(color = "black"),
       axis.ticks        = element_line(color = "black"),
@@ -51,7 +51,7 @@ pcadapt_screeplot <- function(result, maf, method) {
 
 p <- pcadapt_screeplot(result, maf = MAF, method = method)
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/screeplot_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 6, height = 4)
+    width = 5, height = 4)
 print(p)
 dev.off()
 
@@ -112,7 +112,7 @@ pcadapt_pc_scatter <- function(result, maf, method, legend_pos = c(0.99, 0.8)) {
     labs(
       x = lab_pc1,
       y = lab_pc2,
-      title = paste0("<b>(a)</b> MAF = ", maf, ", Method = ", method),
+      title = "",
       color = "Species"
     ) +
     base_opts +
@@ -126,7 +126,7 @@ pcadapt_pc_scatter <- function(result, maf, method, legend_pos = c(0.99, 0.8)) {
     labs(
       x = lab_pc1,
       y = lab_pc3,
-      title = paste0("<b>(b)</b> MAF = ", maf, ", Method = ", method),
+      title = "",
       color = "Species"
     ) +
     base_opts +
@@ -171,7 +171,7 @@ qq_log10p <- function(log10p, title = "", limits = c(0, 7000)) {
     geom_abline(slope = 1, intercept = 0, linetype = 2) +
     labs(x = expression(Expected ~ -log[10](p)), 
          y = expression(Observed ~ -log[10](p)), title = title) +
-    theme_classic(base_size = 13) +
+    theme_classic(base_size = 15) +
     theme(
       axis.line        = element_line(color = "black"),
       axis.ticks       = element_line(color = "black"),
@@ -181,9 +181,9 @@ qq_log10p <- function(log10p, title = "", limits = c(0, 7000)) {
     coord_cartesian(ylim = limits)
 }
 
-p <- qq_log10p(log10p, title = paste0("MAF = ", MAF, ", Method = ", method))
+p <- qq_log10p(log10p, title = bquote(bold(.("(a)")) ~ " MAF =" ~ .(MAF)))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/qq_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
+    width = 5.2, height = 4.8)
 print(p)
 dev.off()
 
@@ -191,10 +191,10 @@ dev.off()
 
 # Histogramm - 3 PCs
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histogram_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
+    width = 4.2, height = 4.2)
 hist(result$pvalues, xlab = "p-values", breaks = 50, col = "#FF7F00", main = "")
-title(main = paste0("MAF = ", MAF, ", Method = ", method), font.main = 1, 
-      cex.main  = 0.9, adj = 0)
+title(main = bquote(bold(.("(a)")) ~ " MAF =" ~ .(MAF)), font.main = 1.2, 
+      cex.main  = 1.2, adj = 0)
 dev.off()
 
 
@@ -208,7 +208,7 @@ for (i in 1:3) {
        pch = 19, cex = .3,
        ylab = paste0("Loadings PC", i), xlab = "")
 }
-mtext(paste0("   MAF = ", MAF, ", Method = ", method),
+mtext(bquote(bold(.("(a)")) ~ " MAF =" ~ .(MAF)),
       side = 3, outer = TRUE, line = 1, adj = 0, font = 1, cex  = 1.0)
 dev.off()
 
@@ -228,12 +228,13 @@ loadings_violin_pcadapt <- function(result, title = "") {
   )
   p <- ggplot(loadings_long, aes(x = PC, y = Loading)) +
     geom_violin(fill = "#E41A1C", alpha = 0.7,
-                         draw_quantiles = c(0.25, 0.5, 0.75)) +
+                draw_quantiles = c(0.25, 0.5, 0.75),
+                width = 1.4) +
     scale_x_discrete(labels = c("PC1", "PC2", "PC3")) +
     labs(x = "Principal component",
                   y = "SNP loading",
                   title = title) +
-    theme_classic(base_size = 13) +
+    theme_classic(base_size = 17) +
     theme(
       axis.line         = element_line(color = "black"),
       axis.ticks        = element_line(color = "black"),
@@ -243,9 +244,9 @@ loadings_violin_pcadapt <- function(result, title = "") {
     )
   return(p)
 }
-p <- loadings_violin_pcadapt(result, title = paste0("MAF = ", MAF, ", Method = ", method))
+p <- loadings_violin_pcadapt(result, title = bquote(bold(.("(a)")) ~ " MAF =" ~ .(MAF)))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/loadings_violins_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.27, height = 5)
+    width = 7.0, height = 5)
 print(p)
 dev.off()
 
@@ -307,7 +308,7 @@ manhattan_pcadapt <- function(result, alpha = 0.01, title, free_deg, limits = c(
   df <- df %>% mutate(Significant = minusLog10P > (-log10(alpha) + log10(n)  ))
   
   p <- ggplot(df, aes(x = BP, y = minusLog10P, color = Significant)) +
-    geom_point(alpha = 0.6, size = 0.8) +
+    geom_point(size = 0.8) +
     scale_color_manual(values = c("FALSE" = "darkgrey", "TRUE" = "#E41A1C")) +
     facet_wrap(~CHR, scales = "free_x", ncol = 4) +
     scale_x_continuous(
@@ -319,20 +320,25 @@ manhattan_pcadapt <- function(result, alpha = 0.01, title, free_deg, limits = c(
       title = title,
       color = paste0("Significance\n(alpha = ", alpha, ",\n Bonferroni)")
     ) +
+    guides(
+      color = guide_legend(
+        override.aes = list(size = 2.5)
+      )
+    ) +
     coord_cartesian(ylim = limits) +
     theme_bw() +
     theme(
-      strip.text = element_text(size = 9),
-      axis.text.x = element_text(size = 6, angle = 45, hjust = 1),
-      axis.text.y = element_text(size = 6),
-      legend.position = c(0.9, 0.1),
+      strip.text = element_text(size = 13),
+      axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
+      axis.text.y = element_text(size = 9),
+      legend.position = c(0.9, 0.05),
       legend.justification = c(1, 0.5)
     )
   list(plot = p, df = df)
 }
 
 p <- manhattan_pcadapt(result, free_deg = free_deg,
-                      title = paste0("MAF = ", MAF, ", Method = ", method))
+                      title = "")
 write.csv(p$df, row.names = FALSE,
           paste0("results/pcadapt/maf_",MAF,"/",method,"/results_",MAF,"_",method,"_pcadapt.csv"))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/manhatten_",MAF,"_",method,"_pcadapt.pdf"), 
@@ -355,14 +361,11 @@ log10p_PC1 <- pchisq(result$chi2.stat[,1], df = free_deg, lower.tail = FALSE, lo
 log10p_PC2 <- pchisq(result$chi2.stat[,2], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
 log10p_PC3 <- pchisq(result$chi2.stat[,3], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
 
-p1 <- qq_log10p(log10p_PC1, title = bquote(atop(bold("(a)") ~ " PC1, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p1 <- qq_log10p(log10p_PC1, title = bquote(atop(bold("(a)") ~ " PC1")), 
                 limits = c(0, 2000))
-p2 <- qq_log10p(log10p_PC2, title = bquote(atop(bold("(b)") ~ " PC2, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p2 <- qq_log10p(log10p_PC2, title = bquote(atop(bold("(b)") ~ " PC2")), 
                 limits = c(0, 3000))
-p3 <- qq_log10p(log10p_PC3, title = bquote(atop(bold("(c)") ~ " PC3, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p3 <- qq_log10p(log10p_PC3, title = bquote(atop(bold("(c)") ~ " PC3")), 
                 limits = c(0, 80))
 pg <- plot_grid(
   p1, p2,
@@ -377,9 +380,18 @@ dev.off()
 
 
 # Histogramme
-pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histograms_",MAF,"_",method,"_pcadapt.pdf"), 
-           width = 9.6, height = 9.6)
-op <- par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+pdf(
+  paste0("results/pcadapt/maf_", MAF, "/", method,
+         "/histograms_", MAF, "_", method, "_pcadapt.pdf"),
+  width = 9, height = 9
+)
+op <- par(
+  mfrow = c(2, 2),
+  mar = c(4.5, 4.5, 2.5, 1),
+  cex.lab  = 1.5,  # Achsentitel
+  cex.axis = 1.5,  # Achsenticks
+  cex.main = 1.5   # Titel
+)
 on.exit(par(op), add = TRUE)
 for (k in 1:3) {
   x <- result$pvalues[, k]
@@ -388,9 +400,8 @@ for (k in 1:3) {
   lab <- paste0("(", letters[k], ")")
   title(
     main = bquote(
-      bold(.(lab)) ~ " PC" * .(k) * "," ~ " MAF = " ~ .(MAF) * ", Method = " ~ .(method)),
-    adj = 0,      # linksbündig
-    cex.main = 0.9
+      bold(.(lab)) ~ " PC" * .(k)),
+    adj = 0
   )
 }
 plot.new()
@@ -410,7 +421,7 @@ write.csv(sylvestre_loadings_df,
 limit <- c(2000,2500,80)
 for (pc in seq_len(K)) {
   p <- manhattan_pcadapt(result, free_deg = free_deg, limits = c(0, limit[pc]), PC = pc,
-    title = paste0("PC", pc, ", MAF = ", MAF, ", Method = ", method)
+    title = ""
   )
   write.csv(p$df, row.names = FALSE,
             paste0("results/pcadapt/maf_", MAF, "/", method,
@@ -438,9 +449,9 @@ method <- "mahalanobis"
 K <- 20
 
 result <- pcadapt(pcadapt_data, K = K, min.maf = MAF ,method = method)
-p <- pcadapt_screeplot(result, maf = MAF, method = method)
+p <- pcadapt_screeplot(result, maf = MAF, method = method, label = "(b)")
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/screeplot_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 6, height = 4)
+    width = 5, height = 4)
 print(p)
 dev.off()
 
@@ -460,10 +471,10 @@ dev.off()
 
 # QQ-Plot - 3 PCs
 log10p <- pchisq(result$chi2.stat, df = K, lower.tail = FALSE, log.p = TRUE) / log(10)
-p <- qq_log10p(log10p, title = paste0("MAF = ", MAF, ", Method = ", method),
+p <- qq_log10p(log10p, title = bquote(bold(.("(b)")) ~ " MAF =" ~ .(MAF)),
                limits = c(0, 300))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/qq_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
+    width = 5.2, height = 4.8)
 print(p)
 dev.off()
 
@@ -471,12 +482,11 @@ dev.off()
 
 # Histogramm - 3 PCs
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histogram_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 4.8, height = 4.8)
+    width = 4.2, height = 4.2)
 hist(result$pvalues, xlab = "p-values", breaks = 50, col = "#FF7F00", main = "")
-title(main = paste0("MAF = ", MAF, ", Method = ", method), font.main = 1, 
-      cex.main  = 0.9, adj = 0)
+title(main = bquote(bold(.("(b)")) ~ " MAF =" ~ .(MAF)), font.main = 1.2, 
+      cex.main  = 1.2, adj = 0)
 dev.off()
-
 
 
 # Loading - LD-Thinning? - 3 PCs
@@ -489,28 +499,28 @@ for (i in 1:3) {
        pch = 19, cex = .3,
        ylab = paste0("Loadings PC", i), xlab = "")
 }
-mtext(paste0("   MAF = ", MAF, ", Method = ", method),
+mtext(bquote(bold(.("(b)")) ~ " MAF =" ~ .(MAF)),
       side = 3, outer = TRUE, line = 1, adj = 0, font = 1, cex  = 1.0)
 dev.off()
 
 
 
 # Loadings-Violin - 3 PCs
-p <- loadings_violin_pcadapt(result, title = paste0("MAF = ", MAF, ", Method = ", method))
+p <- loadings_violin_pcadapt(result, title = bquote(bold(.("(b)")) ~ " MAF =" ~ .(MAF)))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/loadings_violins_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.27, height = 5)
+    width = 7.0, height = 5)
 print(p)
 dev.off()
 
 
 # Manhatten-Plot - 3 PCs
 p <- manhattan_pcadapt(result, free_deg = free_deg,
-                       title = paste0("MAF = ", MAF, ", Method = ", method),
+                       title = "",
                        limits = c(0, 300))
 write.csv(p$df, row.names = FALSE,
           paste0("results/pcadapt/maf_",MAF,"/",method,"/results_",MAF,"_",method,"_pcadapt.csv"))
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/manhatten_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 11.69, height = 8.27)
+    width = 10, height = 5)
 print(p$plot)
 dev.off()
 
@@ -528,14 +538,11 @@ log10p_PC1 <- pchisq(result$chi2.stat[,1], df = free_deg, lower.tail = FALSE, lo
 log10p_PC2 <- pchisq(result$chi2.stat[,2], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
 log10p_PC3 <- pchisq(result$chi2.stat[,3], df = free_deg, lower.tail = FALSE, log.p = TRUE) / log(10)
 
-p1 <- qq_log10p(log10p_PC1, title = bquote(atop(bold("(a)") ~ " PC1, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p1 <- qq_log10p(log10p_PC1, title = bquote(atop(bold("(a)") ~ " PC1")), 
                 limits = c(0, 200))
-p2 <- qq_log10p(log10p_PC2, title = bquote(atop(bold("(b)") ~ " PC2, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p2 <- qq_log10p(log10p_PC2, title = bquote(atop(bold("(b)") ~ " PC2")), 
                 limits = c(0, 25))
-p3 <- qq_log10p(log10p_PC3, title = bquote(atop(bold("(c)") ~ " PC3, MAF = " ~ .(MAF) ~ ",",
-                                                "                  Method = " ~ .(method))), 
+p3 <- qq_log10p(log10p_PC3, title = bquote(atop(bold("(c)") ~ " PC3")), 
                 limits = c(0, 45))
 pg <- plot_grid(
   p1, p2,
@@ -551,8 +558,14 @@ dev.off()
 
 # Histogramme
 pdf(paste0("results/pcadapt/maf_",MAF,"/",method,"/histograms_",MAF,"_",method,"_pcadapt.pdf"), 
-    width = 9.6, height = 9.6)
-op <- par(mfrow = c(2, 2), mar = c(4, 4, 2, 1))
+    width = 9, height = 9)
+op <- par(
+  mfrow = c(2, 2),
+  mar = c(4.5, 4.5, 2.5, 1),
+  cex.lab  = 1.5,  # Achsentitel
+  cex.axis = 1.5,  # Achsenticks
+  cex.main = 1.5   # Titel
+)
 on.exit(par(op), add = TRUE)
 for (k in 1:3) {
   x <- result$pvalues[, k]
@@ -561,9 +574,8 @@ for (k in 1:3) {
   lab <- paste0("(", letters[k], ")")
   title(
     main = bquote(
-      bold(.(lab)) ~ " PC" * .(k) * "," ~ " MAF = " ~ .(MAF) * ", Method = " ~ .(method)),
-    adj = 0,      # linksbündig
-    cex.main = 0.9
+      bold(.(lab)) ~ " PC" * .(k)),
+    adj = 0
   )
 }
 plot.new()
@@ -575,14 +587,14 @@ dev.off()
 limit <- c(200,25,30)
 for (pc in seq_len(K)) {
   p <- manhattan_pcadapt(result, free_deg = free_deg, limits = c(0, limit[pc]), PC = pc,
-                         title = paste0("PC", pc, ", MAF = ", MAF, ", Method = ", method)
+                         title = ""
   )
   write.csv(p$df, row.names = FALSE,
             paste0("results/pcadapt/maf_", MAF, "/", method,
                    "/PC", pc, "_results_", MAF, "_", method, "_pcadapt.csv"))
   pdf(paste0("results/pcadapt/maf_", MAF, "/", method,
              "/PC", pc, "_manhatten_", MAF, "_", method, "_pcadapt.pdf"),
-      width = 11.69, height = 8.27)
+      width = 10, height = 5)
   print(p$plot)
   dev.off()
 }

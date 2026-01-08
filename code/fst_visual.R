@@ -67,15 +67,26 @@ plot_fst <- function(fst_df, snp_df, mark = 0.02, title = "") {
     inner_join(snp_df, by = "CHR") %>%
     filter(BP >= BIN_START, BP < BIN_END) %>%
     mutate(
-      y = FST + 0.03,
+      y = FST + 0.07,
       CHR_f = chr_factor(CHR)
     )
   
   ggplot(fst_df, aes(midBP, FST, colour = WindowMb)) +
-    # Punkte
-    #geom_point(size = 0.4, alpha = 0.6) +
-    # Linien
-    geom_line(linewidth = 0.35) +
+    # 25 Mbp: Linie
+    geom_line(
+      data = subset(fst_df, WindowMb == "25 Mbp"),
+      linewidth = 0.35
+    ) +
+    # 1 Mbp: Punkte
+    geom_point(
+      data = subset(fst_df, WindowMb == "1 Mbp"),
+      size = 0.4
+    ) +
+    # 25 Mbp: zusätzlich Punkte
+    geom_point(
+      data = subset(fst_df, WindowMb == "25 Mbp"),
+      size = 0.4
+    )+
     # Target SNPs
     geom_point(
       data = tri_df,
@@ -84,7 +95,7 @@ plot_fst <- function(fst_df, snp_df, mark = 0.02, title = "") {
       shape = 25,
       fill = "darkblue",
       colour = "darkblue",
-      size = 1.3
+      size = 1.8
     )+
     facet_grid(
       rows = vars(MAF),
@@ -97,15 +108,25 @@ plot_fst <- function(fst_df, snp_df, mark = 0.02, title = "") {
     
     scale_x_continuous(labels = function(x) x / 1e6) +
     scale_colour_manual(values = c("1 Mbp" = "#E41A1C", "25 Mbp" = "black")) +
-    
+    guides(
+      colour = guide_legend(
+        override.aes = list(
+          linewidth = c(0, 2.0),  # 1 Mbp: keine Linie, 25 Mbp: dicke Linie
+          size      = c(2.0, 2.0) # große Punkte in der Legende
+        )
+      )
+    )+
     theme_bw() +
     theme(
       legend.position = "bottom",
-      legend.title = element_text(size = 9),
-      strip.text.x = element_text(size = 9),
-      strip.text.y.right = element_text(angle = 90, size = 9),
-      axis.text.x = element_text(angle = 45, hjust = 1, size = 8),
-      axis.text.y = element_text(size = 8)
+      legend.title = element_text(size = 14),
+      legend.text = element_text(size = 14),
+      strip.text.x = element_text(size = 14),
+      strip.text.y.right = element_text(angle = 90, size = 13),
+      axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+      axis.text.y = element_text(size = 12),
+      axis.title.x = element_text(size = 14),
+      axis.title.y = element_text(size = 14)
     ) +
     
     labs(
@@ -139,7 +160,7 @@ fst_files <- c(
   "results/vcftools/Fst_strictum_sylvestre_maf0.05_1Mb.windowed.weir.fst"
 )
 fst_all <- bind_rows(lapply(fst_files, read_fst_windowed))
-p <- plot_fst(fst_all, targets, title = expression(italic("S. sylvestre") ~ " vs. " ~ italic("S. strictum")) ) 
+p <- plot_fst(fst_all, targets, title = expression(bold("(a)") ~ italic("S. sylvestre") ~ " vs. " ~ italic("S. strictum")) ) 
 ggsave("results/vcftools/fst_sylvestre_vs_strictum.pdf",
        p, width = 15, height = 4)
 
@@ -151,7 +172,7 @@ fst_files <- c(
   "results/vcftools/Fst_sylvestre_other_minus_strictum_maf0.05_1Mb.windowed.weir.fst"
 )
 fst_all <- bind_rows(lapply(fst_files, read_fst_windowed))
-p <- plot_fst(fst_all, targets, title = expression(italic("S. sylvestre") ~ " vs. all other individuals without " ~ italic("S. strictum")))
+p <- plot_fst(fst_all, targets, title = expression(bold("(b)") ~ italic("S. sylvestre") ~ " vs. all other individuals without " ~ italic("S. strictum")))
 ggsave("results/vcftools/fst_sylvestre_vs_other_minus_strictum.pdf",
        p, width = 15, height = 4)
 

@@ -6,6 +6,9 @@ library(stringr)
 library(readr)
 library(tibble)
 library(purrr)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
 
 setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
 
@@ -201,3 +204,68 @@ g <- plot_grid(plotlist = plots, ncol = 2, align = "hv",
                         rel_widths = c(1,1), rel_heights = rep(1, length(plots)/2))
 print(g)
 dev.off()
+
+
+
+# Scree-Plot
+multi_maf_screeplot <- function(csv_file) {
+  df <- read.csv(csv_file, header = FALSE, check.names = FALSE, stringsAsFactors = FALSE)
+  maf_names <- unlist(df[1, -1])             
+  colnames(df) <- c("PC", maf_names)
+  
+  df <- df[-1, ]
+  df$PC_num <- as.integer(sub("PC", "", df$PC))
+  df[,-1] <- lapply(df[,-1], function(x) as.numeric(gsub(",", ".", x)))
+  df$PC <- factor(df$PC, levels = df$PC)
+  
+  df_long <- df %>%
+    pivot_longer(
+      cols = -c(PC, PC_num),
+      names_to = "MAF",
+      values_to = "Eigenvalue"
+    )
+  df_long$MAF <- gsub(",", ".", df_long$MAF)
+  
+  p <- ggplot(df_long, aes(x = PC_num, y = Eigenvalue, color = MAF, group = MAF)) +
+    geom_line(linewidth = 0.8) +
+    geom_point(size = 1.8) +
+    labs(
+      x = "Principal component",
+      y = "Eigenvalue",
+      title = ""
+    ) +
+    scale_color_manual(
+      values = c(
+        "0.01" = "#E41A1C",
+        "0.02" = "#377EB8",
+        "0.03" = "#4DAF4A",
+        "0.04" = "#984EA3",
+        "0.05" = "#FF7F00"
+      ),
+      name = "MAF"
+    ) +
+    scale_x_continuous(breaks = 1:20) +
+    theme_classic(base_size = 14) +
+    theme(
+      axis.line         = element_line(color = "black"),
+      axis.ticks        = element_line(color = "black"),
+      axis.ticks.length = unit(2, "pt"),
+      panel.grid        = element_blank(),
+      legend.title      = element_text(size = 12),
+      legend.text       = element_text(size = 11),
+      legend.position = c(0.85, 0.75),   # Position im Plot (0–1)
+      legend.justification = c(1, 1),     # Bezugspunkt (rechts/oben)
+      legend.background = element_rect(
+        fill = "white",
+        colour = "black",
+        linewidth = 0.3)
+    )
+  
+  return(p)
+}
+
+p <- multi_maf_screeplot(csv_file = "results/PLINK/pca_PLINK_eigenval_PC1-20.csv")
+pdf("results/PLINK/screeplot_PLINK.pdf", width = 8, height = 4, onefile = TRUE)
+print(p)
+dev.off()
+
