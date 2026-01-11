@@ -4,7 +4,7 @@ library(ggnewscale)
 
 par(mfrow = c(1, 1))
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 MAFs <- c(0.01, 0.05) #
 
