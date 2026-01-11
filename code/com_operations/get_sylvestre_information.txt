@@ -1,4 +1,4 @@
-bcftools view -R /home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/ID_data/only_sylvestre_biallelic_SNPs_maf.01.regions.tsv -Oz -o sylvestre_snps.subset.vcf.gz maf.01_minDP20_maxDP100_minQ40_missing.90.recode.vcf.gz
+bcftools view -R ~/rye_project/data/ID_data/only_sylvestre_biallelic_SNPs_maf.01.regions.tsv -Oz -o sylvestre_snps.subset.vcf.gz maf.01_minDP20_maxDP100_minQ40_missing.90.recode.vcf.gz
 
 bcftools index sylvestre_snps.subset.vcf.gz
 
