@@ -7,7 +7,7 @@ library(tidyverse)
 library(cowplot)
 library(grid)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 vcf <- read.vcfR("data/vcftools/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.vcf")
 gt <- extract.gt(vcf,convertNA=TRUE,element='GT', as.numeric=FALSE, return.alleles=FALSE)
