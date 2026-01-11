@@ -2,7 +2,7 @@ library(GAPIT)
 library(dplyr)
 library(ggplot2)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 MAFs <- c(.01, .05)
 limits_by_maf <- list(
