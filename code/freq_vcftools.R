@@ -4,7 +4,7 @@ library(vcfR)
 library(ggplot2)
 library(dplyr)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 id_map <- read.csv("data/ID_data/species_id_map.csv", header = TRUE)
 # 
   # write.table(
