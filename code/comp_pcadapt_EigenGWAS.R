@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(cowplot)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 compare_pcadapt_EigenGWAS <- function(PC, alpha = 0.01, mark = 0.5, MAF = 0.01) {
   pcadapt <- read.csv(paste0("results/pcadapt/maf_",MAF,"/componentwise/PC",PC,"_results_",MAF,"_componentwise_pcadapt.csv"), 
