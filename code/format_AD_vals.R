@@ -1,6 +1,6 @@
 library(tidyverse)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git/data/vcftools")
+setwd("~/rye_project/data/vcftools")
 
 df <- read_tsv("sylvestre_snps.annotation_and_carriers.tsv", show_col_types = FALSE)
 
