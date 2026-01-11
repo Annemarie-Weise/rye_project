@@ -10,7 +10,7 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 #################### Combine ID with species ####################
 
