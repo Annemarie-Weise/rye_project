@@ -8,7 +8,7 @@ library(ggtext)
 library(dplyr)
 library(tibble)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 pcadapt_data <- read.pcadapt("data/bed_PLINK/maf.01_minDP20_maxDP100_minQ40_missing.90.splitted.bed", 
                              type = "bed")
