@@ -3,7 +3,7 @@ library(readr)
 library(stringr)
 library(ggplot2)
 
-setwd("/home/mie/Schreibtisch/Unistuff/Master/Semester2/Forschungsgruppenpraktikum_Steven/Test_Git")
+setwd("~/rye_project")
 
 normalize_chr <- function(x) {
   x <- trimws(as.character(x))
